@@ -47,7 +47,7 @@ app.use((req, res) => {
         return;
     }
 
-    res.send('Not found');
+    res.render('index/index.ejs');
 });
 
 /**
