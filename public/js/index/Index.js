@@ -7,13 +7,27 @@ import {mainIntro, pageIntro, pageOutro} from '../general/animations/pageTransit
  * Presentational part of the component
  * @constructor
  */
-export class Index extends Component {
+export default class Index extends Component {
     /**
      * Constructor
      * @param props
      */
     constructor(props) {
         super(props);
+        this.state = {
+            patterns: [
+                {
+                    name: "test"
+                },
+                {
+                    name: "test1"
+                },
+                {
+                    name: "test2"
+                }
+            ]
+        };
+
         this.domElements = {
             mainContainer: null
         };
@@ -60,6 +74,20 @@ export class Index extends Component {
         return (
             <main style={{opacity: 0}} ref={c => this.domElements.mainContainer = c}>
                 Hey a webpage!
+                <div className="flex-container">
+                    {this.state.patterns.map((item, key) => (
+                        <div className="flex-item card blue-grey darken-1" key={key}>
+                            <div className="card-content white-text">
+                                <span className="card-title">{item.name}</span>
+                                <p>Some content here</p>
+                            </div>
+                            <div className="card-action">
+                                <a href="#">Link</a>
+                                <a href="#">Link</a>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </main>
         );
     }

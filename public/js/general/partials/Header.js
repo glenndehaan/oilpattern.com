@@ -48,7 +48,11 @@ export class Header extends Component {
     render() {
         return (
             <header className="header">
-
+                <nav>
+                    <div className="nav-wrapper orange darken-1">
+                        <a href="#" className="brand-logo left">Oil Patterns</a>
+                    </div>
+                </nav>
             </header>
         )
     }

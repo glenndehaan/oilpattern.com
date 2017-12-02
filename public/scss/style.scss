@@ -1,9 +1,18 @@
+@charset "UTF-8";
+
 // imports
 @import
 
   // Variables
-'variables/colors',
+'variables/_colors',
+'variables/_fonts',
 
   // global
-'global/normalize',
-'global/utils';
+'global/_normalize',
+'global/_utils',
+
+// components
+'components/_flexcontainer',
+
+  // materialize
+'materialize/_materialize';
