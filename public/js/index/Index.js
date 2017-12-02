@@ -46,7 +46,7 @@ export class Index extends Component {
         pageOutro(callback, this.domElements);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         document.title = `Home | ${config.siteName}`;
         site.events.emit('historyChange', '/');
     }
