@@ -1,5 +1,4 @@
 export default class api {
-
     /**
      * Creates an instance
      */
@@ -17,7 +16,7 @@ export default class api {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     this.data = JSON.parse(xhr.responseText);
-                    this.callback(this.data.projects);
+                    this.callback(this.data);
                 } else {
                     console.error(xhr);
                 }

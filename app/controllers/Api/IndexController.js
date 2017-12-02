@@ -6,7 +6,7 @@ class IndexController extends baseController {
     }
 
     indexAction(req, res) {
-        this.jsonResponse(res, 200, { 'message': 'Default API route!' });
+        this.jsonResponse(res, 200, { message: 'Default API route!' });
     }
 }
 

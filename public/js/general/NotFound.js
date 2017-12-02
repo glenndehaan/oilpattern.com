@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import config from '../main/config';
 import {mainIntro, pageIntro, pageOutro} from './animations/pageTransitions';
 
@@ -45,6 +46,9 @@ export default class NotFound extends Component {
         pageOutro(callback, this.domElements);
     }
 
+    /**
+     * On mount complete
+     */
     componentDidMount(){
         document.title = `Not Found | ${config.siteName}`;
         site.events.emit('historyChange', '');
@@ -58,7 +62,8 @@ export default class NotFound extends Component {
     render() {
         return (
             <main style={{opacity: 0}} className="page not-found" ref={(c) => this.domElements.mainContainer = c}>
-                <h1 className="landing-title not-found-title">404 Page <br/>not found!</h1>
+                <h2>404 Page not found!</h2>
+                <h5>Click the logo to return to home or <Link to="/">click here</Link></h5>
             </main>
         )
     }

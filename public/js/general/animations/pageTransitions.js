@@ -23,7 +23,7 @@ export const mainIntro = (callback, elements) => {
  * @param elements
  */
 export const pageIntro = (callback, elements) => {
-    TweenMax.to(elements.mainContainer, 1, {
+    TweenMax.to(elements.mainContainer, 0.5, {
         opacity: 1,
         onComplete: callback
     });
@@ -35,7 +35,7 @@ export const pageIntro = (callback, elements) => {
  * @param elements
  */
 export const pageOutro = (callback, elements) => {
-    TweenMax.to(elements.mainContainer, 1, {
+    TweenMax.to(elements.mainContainer, 0.5, {
         opacity: 0,
         onComplete: callback
     });

@@ -50,7 +50,7 @@ export class Header extends Component {
             <header className="header">
                 <nav>
                     <div className="nav-wrapper orange darken-1">
-                        <a href="#" className="brand-logo left">Oil Patterns</a>
+                        <Link to="/" className="brand-logo left">Oil Pattern</Link>
                     </div>
                 </nav>
             </header>

@@ -10,9 +10,9 @@ const routerUtils = require('../helpers/utils/Router');
  */
 const routes = [
     {
-        route: '/',
+        route: '/pattern',
         method: 'get',
-        controller: 'Index',
+        controller: 'Pattern',
         action: 'index'
     }
 ];

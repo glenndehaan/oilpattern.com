@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import config from '../main/config';
+import apiConnector from '../general/utils/api';
 import {mainIntro, pageIntro, pageOutro} from '../general/animations/pageTransitions';
 
 /**
@@ -60,9 +61,27 @@ export default class Index extends Component {
         pageOutro(callback, this.domElements);
     }
 
+    /**
+     * On mount complete
+     */
     componentDidMount() {
         document.title = `Home | ${config.siteName}`;
         site.events.emit('historyChange', '/');
+
+        this.getPatterns();
+    }
+
+    /**
+     * Function to get the patterns from the API
+     */
+    getPatterns() {
+        new apiConnector("/api/pattern", (data) => {
+            this.setState({
+                patterns: data.patterns
+            });
+
+            console.log('data', data);
+        });
     }
 
     /**
