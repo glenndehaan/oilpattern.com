@@ -6,6 +6,11 @@ import {TweenMax} from 'gsap';
  * @param elements
  */
 export const mainIntro = (callback, elements) => {
+    TweenMax.to(document.querySelector("#preloader"), 1, {
+        opacity: 0,
+        display: 'none'
+    });
+
     TweenMax.to(elements.mainContainer, 1, {
         opacity: 1,
         onComplete: callback
