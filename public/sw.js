@@ -1,3 +1,4 @@
+/* eslint-disable */
 const CACHE_NAME = 'OILPATTERN-v1';
 const expectedCaches = [CACHE_NAME];
 const staticFiles = [

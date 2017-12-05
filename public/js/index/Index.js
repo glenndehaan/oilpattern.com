@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import config from '../main/config';
 import apiConnector from '../general/utils/api';
 import {mainIntro, pageIntro, pageOutro} from '../general/animations/pageTransitions';

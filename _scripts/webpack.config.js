@@ -80,7 +80,7 @@ module.exports = {
                             sourceMap: 'inline',
                             plugins: [
                                 autoprefixer
-                            ],
+                            ]
                         }
                     },
                     'sass-loader?sourceMap=true'

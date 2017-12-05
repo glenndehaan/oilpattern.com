@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import {Route} from 'react-router-dom';
 import {TransitionSwitch} from 'react-router-v4-transition';

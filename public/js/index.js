@@ -9,10 +9,8 @@ import {BrowserRouter} from 'react-router-dom';
 import mitt from 'mitt';
 
 import config from './main/config';
-import {loadState, saveState} from './main/storage';
-import api from './general/utils/api';
 
-import Root from './main/Root'
+import Root from './main/Root';
 
 const render = Component => {
     site.events = mitt();
