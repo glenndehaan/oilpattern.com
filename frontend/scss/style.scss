@@ -1,0 +1,12 @@
+// Reset Styling
+@import 'global/normalize';
+
+// Import Material Design Light
+@import '~material-design-lite/src/material-design-lite';
+
+// Imports
+@import
+  'variables/colors',
+  'components/card',
+  'global/base',
+  'global/material-icons';

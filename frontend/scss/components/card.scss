@@ -1,0 +1,11 @@
+.card-wide.mdl-card {
+  width: 100%;
+}
+.card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background: url('../images/welcome_card.jpg') center / cover;
+}
+.card-wide > .mdl-card__menu {
+  color: #fff;
+}

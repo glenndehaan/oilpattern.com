@@ -1,105 +1,143 @@
-const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
-const combineLoaders = require('webpack-combine-loaders');
-
-const autoprefixer = require('autoprefixer');
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const ReplaceInFileWebpackPlugin = require('replace-in-file-webpack-plugin');
+const CreateFileWebpack = require('create-file-webpack');
+const uuid = require('uuid/v4');
 
-module.exports = {
-    devServer: {
-        contentBase: path.resolve(__dirname, '../public'),
-        hot: true,
-        port: 8080,
-        host: '0.0.0.0',
-        historyApiFallback: true,
-        public: 'localhost:8080',
-        disableHostCheck: true
-    },
+const projectRoot = path.join(__dirname, '../');
+const buildDirectory = path.join(projectRoot, 'frontend');
+const distDirectory = path.join(projectRoot, 'build');
 
-    devtool: 'source-map',
+const ENV = process.env.NODE_ENV || 'development';
 
-    entry: {
-        'app': [
-            'babel-polyfill',
-            'react-hot-loader/patch',
-            '../public/js/index'
-        ],
-        'style': '../public/scss/style.scss'
-    },
-
-    output: {
-        path: path.resolve(__dirname, '../public/dist'),
-        filename: '[name].js',
-        publicPath: '/'
-    },
-
-    resolve: {
-        extensions: ['.jsx', '.js', '.scss'],
-        modules: [path.join(__dirname, 'node_modules')],
-        alias: {
-            "TweenLite": "gsap/src/uncompressed/TweenLite",
-            "TweenMax": "gsap/src/uncompressed/TweenMax",
-            "TimelineMax": "gsap/src/uncompressed/TimelineMax.js",
-            "ScrollToPlugin": "gsap/src/uncompressed/plugins/ScrollToPlugin.js"
-        }
-    },
-
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: combineLoaders([
-                    {
-                        loader: 'react-hot-loader/webpack'
-                    },
-                    {
+module.exports = (env) => {
+    const webpackSettings = {
+        performance: {
+            hints: false
+        },
+        devServer: {
+            host: '0.0.0.0',
+            port: 3001,
+            index: 'index.html',
+            historyApiFallback: true
+        },
+        entry: {
+            main: [
+                path.join(buildDirectory, 'index.js'),
+                path.join(buildDirectory, 'scss/style.scss')
+            ]
+        },
+        output: {
+            path: distDirectory,
+            filename: 'dist/[name].[hash:6].js',
+            publicPath: '/'
+        },
+        module: {
+            rules: [
+                {
+                    enforce: "pre",
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loader: 'eslint-loader',
+                    options: {
+                        failOnError: true,
+                        failOnWarning: false
+                    }
+                },
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    use: {
                         loader: 'babel-loader',
-                        options: {
+                        query: {
                             presets: [
-                                require.resolve('babel-preset-es2015-native-modules'),
-                                require.resolve('babel-preset-react')
+                                require.resolve('@babel/preset-env'),
+                                require.resolve('@babel/preset-react')
                             ],
                             plugins: [
-                                require.resolve('babel-plugin-transform-object-rest-spread'),
-                                require.resolve('babel-plugin-transform-react-jsx')
+                                [require.resolve('@babel/plugin-transform-react-jsx'), {pragma: 'h'}]
                             ]
                         }
                     }
-                ])
-            },
-            {
-                test: /\.(css|scss)$/,
-                use: [
-                    'style-loader',
-                    'raw-loader?url=false', {
-                        loader: 'postcss-loader',
-                        options: {
-                            context: path.resolve(__dirname, '../public'),
-                            sourceMap: 'inline',
-                            plugins: [
-                                autoprefixer
-                            ]
-                        }
-                    },
-                    'sass-loader?sourceMap=true'
-                ]
-            }
+                },
+                {
+                    test: /\.scss$/,
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        'css-loader?url=false',
+                        'sass-loader'
+                    ]
+                }
+            ]
+        },
+        plugins: [
+            // new BundleAnalyzerPlugin(),
+            new CopyPlugin([
+                {from: 'public/kill-switch.txt'},
+                {from: 'public/manifest.json'},
+                {from: 'public/sitemap.xml'},
+                {from: 'public/robots.txt'},
+                {from: 'public/sw.js'},
+                {from: 'public/docs/*.*', to: 'docs/', flatten: true},
+                {from: 'public/fonts/*.*', to: 'fonts/', flatten: true},
+                {from: 'public/images/*.*', to: 'images/', flatten: true},
+                {from: 'public/images/design/*.*', to: 'images/design/', flatten: true},
+                {from: 'public/images/icon/*.*', to: 'images/icon/', flatten: true},
+                {from: 'public/images/projects/*.*', to: 'images/projects/', flatten: true}
+            ]),
+            new HtmlWebpackPlugin({
+                template: 'public/index.html',
+                inject: false
+            }),
+            new MiniCssExtractPlugin({
+                filename: 'dist/[name].[hash:6].css'
+            })
         ]
-    },
+    };
 
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../public/index.html'),
-            minify: {collapseWhitespace: true}
-        }),
-
-        // Prints more readable module names in the browser console on HMR updates
-        new webpack.NamedModulesPlugin()
-    ],
-
-    stats: {
-        colors: true
+    if(ENV === "production") {
+        webpackSettings.plugins.push(
+            new ReplaceInFileWebpackPlugin([
+                {
+                    dir: 'build',
+                    test: /\.js$/,
+                    rules: [{
+                        search: /__SW_VERSION__/g,
+                        replace: `oilpattern.com_${uuid()}`
+                    }]
+                }
+            ]),
+            new CreateFileWebpack({
+                path: distDirectory,
+                fileName: 'kill-switch.txt',
+                content: env ? env.SW_KILL : 'false'
+            })
+        );
     }
+
+    if (ENV === "production") {
+        webpackSettings.optimization = {
+            minimizer: [
+                new UglifyJsPlugin({
+                    sourceMap: false,
+                    uglifyOptions: {
+                        warnings: false,
+                        output: {
+                            comments: false,
+                            beautify: false
+                        },
+                        compress: {
+                            drop_console: true
+                        }
+                    }
+                })
+            ]
+        };
+    }
+
+    return webpackSettings;
 };
