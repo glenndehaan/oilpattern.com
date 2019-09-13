@@ -1,10 +1,27 @@
 import {h, Component} from 'preact';
 import { connect } from 'unistore/preact';
 
+import {actions} from "../modules/store";
 import config from '../config';
 import Link from "./Link";
 
 class Header extends Component {
+    /**
+     * Constructor
+     */
+    constructor() {
+        super();
+
+        this.searchBar = null;
+    }
+
+    /**
+     * Updates the store with the search value
+     */
+    search() {
+        this.props.updateSearch(this.searchBar.value);
+    }
+
     /**
      * Preact render function
      *
@@ -22,7 +39,7 @@ class Header extends Component {
                                 <i className="material-icons">search</i>
                             </label>
                             <div className="mdl-textfield__expandable-holder">
-                                <input className="mdl-textfield__input" type="text" name="sample" id="waterfall-exp"/>
+                                <input className="mdl-textfield__input" type="text" name="sample" id="waterfall-exp" value={this.props.search} ref={(c) => this.searchBar = c} onKeyUp={() => this.search()}/>
                             </div>
                         </div>
                     }
@@ -35,4 +52,4 @@ class Header extends Component {
 /**
  * Connect the store to the component
  */
-export default connect('router')(Header);
+export default connect('router,search', actions)(Header);

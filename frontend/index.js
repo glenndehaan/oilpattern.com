@@ -1,5 +1,5 @@
 import './utils/polyfills';
-import 'material-design-lite/material.min'
+import 'material-design-lite/material'
 import {h, render} from 'preact';
 import {Provider} from 'unistore/preact';
 

@@ -14,7 +14,8 @@ const createStore = () => {
             current: getBaseRoute(),
             previous: null,
             url: window.location.pathname
-        }
+        },
+        search: ''
     };
 
     return process.env.NODE_ENV === 'production' ?  createUnistore(initialState) : devtools(createUnistore(initialState));
@@ -27,6 +28,11 @@ const createStore = () => {
  */
 const actions = () => {
     return {
+        updateSearch(state, payload) {
+            return {
+                search: payload
+            };
+        },
         updateRouter(state, payload) {
             return {
                 router: payload

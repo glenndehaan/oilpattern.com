@@ -1,10 +1,11 @@
 import {h, Component} from 'preact';
+import {connect} from "unistore/preact";
 
 import config from '../config';
 import {pageIntro} from '../utils/transitions';
 import Card from "../components/Card";
 
-export default class Home extends Component {
+class Home extends Component {
     /**
      * Constructor
      */
@@ -21,6 +22,7 @@ export default class Home extends Component {
      */
     componentDidMount(){
         document.title = `Home | ${config.general.siteName}`;
+        window.componentHandler.upgradeDom();
 
         //Start intro when the component will appear
         pageIntro(() => {}, this.domElements);
@@ -36,13 +38,27 @@ export default class Home extends Component {
             <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
                 <div className="page-content">
                     <div className="mdl-grid">
-                        {config.patterns.map((pattern, key) => (
-                            <div key={key} className="mdl-cell mdl-cell--4-col">
-                                <Card buttons={["View", "Download"]} topIcon="share" title={pattern.title} slug={pattern.id}>
-                                    {pattern.description}
-                                </Card>
-                            </div>
-                        ))}
+                        {config.patterns.map((pattern, key) => {
+                            if(this.props.search === '') {
+                                return (
+                                    <div key={key} className="mdl-cell mdl-cell--4-col">
+                                        <Card buttons={["View", "Download"]} topIcon="share" title={pattern.title} slug={pattern.id}>
+                                            {pattern.description}
+                                        </Card>
+                                    </div>
+                                )
+                            } else {
+                                if(pattern.title.toLowerCase().includes(this.props.search.toLowerCase())) {
+                                    return (
+                                        <div key={key} className="mdl-cell mdl-cell--4-col">
+                                            <Card buttons={["View", "Download"]} topIcon="share" title={pattern.title} slug={pattern.id}>
+                                                {pattern.description}
+                                            </Card>
+                                        </div>
+                                    )
+                                }
+                            }
+                        })}
                         <div className="mdl-cell mdl-cell--4-col">
                             <Card buttons={["View", "Download"]} topIcon="share" title="Plutonium 2239" slug="plutonium_2239">
                                 This 39 foot pattern to your ego is a lot like the element Plutonium for the world ‐ “it can create or destroy”.
@@ -54,3 +70,8 @@ export default class Home extends Component {
         );
     }
 }
+
+/**
+ * Connect the store to the component
+ */
+export default connect('search')(Home);
