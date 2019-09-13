@@ -16,9 +16,7 @@ export default class Card extends Component {
                         {this.props.title}
                     </h2>
                 </div>
-                <div className="mdl-card__supporting-text">
-                    {this.props.children}
-                </div>
+                <div className="mdl-card__supporting-text" dangerouslySetInnerHTML={{__html: this.props.children}}/>
                 {this.props.buttons &&
                     <div className="mdl-card__actions mdl-card--border">
                         {this.props.buttons.map((button, key) => {

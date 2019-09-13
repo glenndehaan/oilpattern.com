@@ -33,29 +33,22 @@ class Home extends Component {
      * @returns {*}
      */
     render() {
-        const items = [];
-
-        for(let item = 0; item < 6; item ++) {
-            items.push(
-                <div className="mdl-cell mdl-cell--4-col">
-                    <Card buttons={["View", "Download"]} topIcon="share" title="Welcome">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Mauris sagittis pellentesque lacus eleifend lacinia...
-                    </Card>
-                </div>
-            )
-        }
-
         return (
             <main className="mdl-layout__content">
                 <div className="page-content">
                     <div className="mdl-grid">
+                        {config.patterns.map((pattern, key) => (
+                            <div key={key} className="mdl-cell mdl-cell--4-col">
+                                <Card buttons={["View", "Download"]} topIcon="share" title={pattern.title} slug="plutonium_2239">
+                                    {pattern.description}
+                                </Card>
+                            </div>
+                        ))}
                         <div className="mdl-cell mdl-cell--4-col">
                             <Card buttons={["View", "Download"]} topIcon="share" title="Plutonium 2239" slug="plutonium_2239">
                                 This 39 foot pattern to your ego is a lot like the element Plutonium for the world ‐ “it can create or destroy”.
                             </Card>
                         </div>
-                        {items}
                     </div>
                 </div>
             </main>
