@@ -1,11 +1,10 @@
 import {h, Component} from 'preact';
-import { connect } from 'unistore/preact';
 
 import config from '../config';
 import {pageIntro} from '../utils/transitions';
 import Card from "../components/Card";
 
-class Home extends Component {
+export default class Home extends Component {
     /**
      * Constructor
      */
@@ -34,12 +33,12 @@ class Home extends Component {
      */
     render() {
         return (
-            <main className="mdl-layout__content">
+            <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
                 <div className="page-content">
                     <div className="mdl-grid">
                         {config.patterns.map((pattern, key) => (
                             <div key={key} className="mdl-cell mdl-cell--4-col">
-                                <Card buttons={["View", "Download"]} topIcon="share" title={pattern.title} slug="plutonium_2239">
+                                <Card buttons={["View", "Download"]} topIcon="share" title={pattern.title} slug={pattern.id}>
                                     {pattern.description}
                                 </Card>
                             </div>
@@ -55,8 +54,3 @@ class Home extends Component {
         );
     }
 }
-
-/**
- * Connect the store to the component
- */
-export default connect('programming')(Home);

@@ -91,8 +91,8 @@ class Router extends Component {
             return <Home/>;
         }
 
-        if(url === "/pattern") {
-            return <Pattern/>;
+        if(url.includes("/pattern/")) {
+            return <Pattern url={url}/>;
         }
 
         return <NotFound/>;

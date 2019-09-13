@@ -1,16 +1,19 @@
 import {h, Component} from 'preact';
-import { connect } from 'unistore/preact';
 
 import config from '../config';
 import {pageIntro} from '../utils/transitions';
 import Link from "../components/Link";
 
-class Pattern extends Component {
+export default class Pattern extends Component {
     /**
      * Constructor
      */
     constructor() {
         super();
+
+        this.state = {
+            content: false
+        };
 
         this.domElements = {
             mainContainer: null
@@ -22,9 +25,35 @@ class Pattern extends Component {
      */
     componentDidMount(){
         document.title = `Pattern | ${config.general.siteName}`;
+        const urlParts = this.props.url.split('/');
+
+        this.setState({
+            content: this.searchPattern(parseInt(urlParts[urlParts.length - 1]), config.patterns)
+        });
 
         //Start intro when the component will appear
         pageIntro(() => {}, this.domElements);
+    }
+
+    /**
+     * Search for pattern
+     *
+     * @param id
+     * @param patterns
+     * @return {*}
+     */
+    searchPattern(id, patterns) {
+        for (let i = 0; i < patterns.length; i++) {
+            if (patterns[i].id === id) {
+                return patterns[i];
+            }
+
+            if (i === patterns.length - 1) {
+                return false;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -33,20 +62,55 @@ class Pattern extends Component {
      * @returns {*}
      */
     render() {
-        return (
-            <main className="mdl-layout__content">
-                <div className="page-content">
-                    <div className="mdl-grid">
-                        <Link href="/">Back</Link>
-                        <img src="/images/patterns/plutonium_2239.jpg"/>
+        if(this.state.content) {
+            return (
+                <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
+                    <div className="page-content">
+                        <div className="mdl-grid">
+                            <div className="mdl-cell mdl-cell--4-col">
+                                <Link href="/">
+                                    <button className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                                        Back
+                                    </button>
+                                </Link>
+                                <br/>
+                                <br/>
+                                <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                                    <tbody>
+                                        <tr>
+                                            <td className="mdl-data-table__cell--non-numeric">Title</td>
+                                            <td className="mdl-data-table__cell--non-numeric">{this.state.content.title}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="mdl-data-table__cell--non-numeric">Category</td>
+                                            <td className="mdl-data-table__cell--non-numeric">{this.state.content.category}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="mdl-data-table__cell--non-numeric">Description</td>
+                                            <td className="mdl-data-table__cell--non-numeric" dangerouslySetInnerHTML={{__html: this.state.content.description}}/>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="mdl-cell mdl-cell--8-col">
+                                <img className="pattern-image" src="/images/patterns/plutonium_2239.jpg"/>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </main>
-        );
+                </main>
+            );
+        } else {
+            return (
+                <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
+                    <div className="page-content">
+                        <div className="mdl-grid">
+                            <div className="mdl-cell mdl-cell--10-col">
+                                <h2>404 Page not found!</h2>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            );
+        }
     }
 }
-
-/**
- * Connect the store to the component
- */
-export default connect('programming')(Pattern);

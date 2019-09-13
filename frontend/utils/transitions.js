@@ -74,7 +74,6 @@ const transition = (type, callback, elements) => {
             callback();
         }
     });
-    const blend = document.querySelector('[data-blend]');
 
     let opacity = [];
     let y = [];
@@ -100,13 +99,4 @@ const transition = (type, callback, elements) => {
         translateY: y,
         easing: ease
     }, 0);
-
-    if (type === 'outro') {
-        tl.add({
-            targets: blend,
-            translateY: ["0%", "200%"],
-            easing: ease,
-            duration: duration * 1.5
-        }, 0);
-    }
 };

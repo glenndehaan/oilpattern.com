@@ -1,7 +1,6 @@
 import createUnistore from 'unistore';
 import devtools from 'unistore/devtools';
 
-import storage from './storage';
 import {getBaseRoute} from "../utils/routing";
 
 /**
@@ -15,8 +14,7 @@ const createStore = () => {
             current: getBaseRoute(),
             previous: null,
             url: window.location.pathname
-        },
-        programming: storage.get("programming") || []
+        }
     };
 
     return process.env.NODE_ENV === 'production' ?  createUnistore(initialState) : devtools(createUnistore(initialState));
@@ -29,11 +27,6 @@ const createStore = () => {
  */
 const actions = () => {
     return {
-        setProgrammingData(state, payload) {
-            return {
-                programming: payload.programming
-            };
-        },
         updateRouter(state, payload) {
             return {
                 router: payload

@@ -22,5 +22,5 @@ export const validateServiceWorkerInstance = (url = '/api/sw', expect = 'false')
                 registrations[i].unregister();
             }
         });
-    }, false, false);
+    }, false);
 };

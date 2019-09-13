@@ -32,8 +32,14 @@ export default class NotFound extends Component {
      */
     render() {
         return (
-            <main className="page not-found" ref={(c) => this.domElements.mainContainer = c}>
-                <h1 className="landing-title not-found-title">404 Page <br/>not found!</h1>
+            <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
+                <div className="page-content">
+                    <div className="mdl-grid">
+                        <div className="mdl-cell mdl-cell--10-col">
+                            <h2>404 Page not found!</h2>
+                        </div>
+                    </div>
+                </div>
             </main>
         )
     }

@@ -16,14 +16,16 @@ class Header extends Component {
                 <div className="mdl-layout__header-row">
                     <span className="mdl-layout-title"><Link href="/">{config.general.siteName}</Link></span>
                     <div className="mdl-layout-spacer"/>
-                    <div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
-                        <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="waterfall-exp">
-                            <i className="material-icons">search</i>
-                        </label>
-                        <div className="mdl-textfield__expandable-holder">
-                            <input className="mdl-textfield__input" type="text" name="sample" id="waterfall-exp"/>
+                    {this.props.router.url === '/' &&
+                        <div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+                            <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="waterfall-exp">
+                                <i className="material-icons">search</i>
+                            </label>
+                            <div className="mdl-textfield__expandable-holder">
+                                <input className="mdl-textfield__input" type="text" name="sample" id="waterfall-exp"/>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </header>
         )
