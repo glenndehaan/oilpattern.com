@@ -59,11 +59,6 @@ class Home extends Component {
                                 }
                             }
                         })}
-                        <div className="mdl-cell mdl-cell--4-col">
-                            <Card buttons={["View", "Download"]} topIcon="share" title="Plutonium 2239" slug="plutonium_2239">
-                                This 39 foot pattern to your ego is a lot like the element Plutonium for the world ‐ “it can create or destroy”.
-                            </Card>
-                        </div>
                     </div>
                 </div>
             </main>
