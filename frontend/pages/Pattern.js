@@ -37,7 +37,8 @@ class Pattern extends Component {
             <main className="mdl-layout__content">
                 <div className="page-content">
                     <div className="mdl-grid">
-                        <Link href="/">Hoi</Link>
+                        <Link href="/">Back</Link>
+                        <img src="/images/patterns/plutonium_2239.jpg"/>
                     </div>
                 </div>
             </main>

@@ -21,11 +21,21 @@ export default class Card extends Component {
                 </div>
                 {this.props.buttons &&
                     <div className="mdl-card__actions mdl-card--border">
-                        {this.props.buttons.map((button, key) => (
-                            <Link key={key} href="/pattern" className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                                {button}
-                            </Link>
-                        ))}
+                        {this.props.buttons.map((button, key) => {
+                            if(button === 'View') {
+                                return (
+                                    <Link key={key} href={`/pattern/${this.props.slug}`} className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                        {button}
+                                    </Link>
+                                )
+                            } else {
+                                return (
+                                    <a key={key} href={`/docs/patterns/${this.props.slug}.pdf`} download={`${this.props.slug}.pdf`} className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                        {button}
+                                    </a>
+                                )
+                            }
+                        })}
                     </div>
                 }
                 {this.props.topIcon &&

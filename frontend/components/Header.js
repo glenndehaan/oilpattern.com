@@ -2,6 +2,7 @@ import {h, Component} from 'preact';
 import { connect } from 'unistore/preact';
 
 import config from '../config';
+import Link from "./Link";
 
 class Header extends Component {
     /**
@@ -13,7 +14,7 @@ class Header extends Component {
         return (
             <header className="mdl-layout__header">
                 <div className="mdl-layout__header-row">
-                    <span className="mdl-layout-title">{config.general.siteName}</span>
+                    <span className="mdl-layout-title"><Link href="/">{config.general.siteName}</Link></span>
                     <div className="mdl-layout-spacer"/>
                     <div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
                         <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="waterfall-exp">

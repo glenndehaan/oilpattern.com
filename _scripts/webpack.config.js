@@ -82,12 +82,10 @@ module.exports = (env) => {
                 {from: 'public/sitemap.xml'},
                 {from: 'public/robots.txt'},
                 {from: 'public/sw.js'},
-                {from: 'public/docs/*.*', to: 'docs/', flatten: true},
+                {from: 'public/docs/patterns/*.*', to: 'docs/patterns/', flatten: true},
                 {from: 'public/fonts/*.*', to: 'fonts/', flatten: true},
                 {from: 'public/images/*.*', to: 'images/', flatten: true},
-                {from: 'public/images/design/*.*', to: 'images/design/', flatten: true},
-                {from: 'public/images/icon/*.*', to: 'images/icon/', flatten: true},
-                {from: 'public/images/projects/*.*', to: 'images/projects/', flatten: true}
+                {from: 'public/images/patterns/*.*', to: 'images/patterns/', flatten: true}
             ]),
             new HtmlWebpackPlugin({
                 template: 'public/index.html',

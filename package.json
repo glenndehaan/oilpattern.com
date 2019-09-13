@@ -27,7 +27,8 @@
     },
     "env": {
       "browser": true,
-      "node": true
+      "node": true,
+      "es6": true
     },
     "rules": {
       "no-console": 0,
@@ -86,5 +87,9 @@
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.4.1"
+  },
+  "devDependencies": {
+    "node-html-parser": "^1.1.16",
+    "request": "^2.88.0"
   }
 }
