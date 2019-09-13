@@ -9,6 +9,7 @@ const request = require('request');
 const getData = (url) => {
     return new Promise((resolve) => {
         request(url, (error, response, body) => {
+            console.log('------------------------------------------------------------------------------------------');
             console.log('url', url);
 
             if(error) {
@@ -30,6 +31,7 @@ const getData = (url) => {
                 console.log('No content here!!');
             }
 
+            console.log('------------------------------------------------------------------------------------------');
             resolve();
         });
     });
