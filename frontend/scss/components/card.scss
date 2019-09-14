@@ -4,8 +4,20 @@
 .card-wide > .mdl-card__title {
   color: #fff;
   height: 176px;
-  background: url('../images/welcome_card.jpg') center / cover;
+  background: url('../images/patterns/plutonium_2239.jpg') center / cover;
 }
 .card-wide > .mdl-card__menu {
   color: #fff;
+}
+
+.mdl-card__title-text {
+  background-color: rgba(63, 81, 181, 0.7);
+}
+
+.mdl-card__menu {
+  button {
+    i {
+      background-color: rgb(63, 81, 181);
+    }
+  }
 }

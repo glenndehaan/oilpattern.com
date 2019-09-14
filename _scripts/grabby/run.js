@@ -2,6 +2,7 @@
  * Import vendor packages
  */
 const fs = require('fs');
+const { exec } = require('child_process');
 const { parse } = require('node-html-parser');
 const request = require('request');
 
@@ -16,9 +17,9 @@ const config = [];
  * @param url
  * @param id
  */
-const getData = (url, id) => {
+const getData =  (url, id) => {
     return new Promise((resolve) => {
-        request(url, (error, response, body) => {
+        request(url, async (error, response, body) => {
             console.log('------------------------------------------------------------------------------------------');
             console.log('url', url);
 
@@ -33,22 +34,59 @@ const getData = (url, id) => {
                 const title = root.querySelector('.right_bar h2').text;
                 const category = root.querySelector('.cat h2 span span').text;
                 const description = root.querySelector('.text').innerHTML;
+                const info = root.querySelectorAll('.info ul li span span');
+                const distance = info[0].text;
+                const volume = info[1].text;
+                const forward = info[2].text;
+                const reverse = info[3].text;
 
                 console.log('id', id);
                 console.log('title', title);
                 console.log('category', category);
                 console.log('description', description);
+                console.log('distance', distance);
+                console.log('volume', volume);
+                console.log('forward', forward);
+                console.log('reverse', reverse);
                 config.push({
                     id,
                     title,
                     category,
-                    description
+                    description,
+                    distance,
+                    volume,
+                    forward,
+                    reverse
                 });
+
+                await pdf(`http://patternlibrary.kegel.net/PatternLibraryFunctions.aspx?OPCODE=DOWNLOADFILE&ID=${id}&Type=2"`, id);
             } else {
                 console.log('No content here!!');
             }
 
             console.log('------------------------------------------------------------------------------------------');
+            resolve();
+        });
+    });
+};
+
+/**
+ * Downloads a PDF
+ *
+ * @param url
+ * @param id
+ * @return {Promise<unknown>}
+ */
+const pdf = (url, id) => {
+    return new Promise((resolve) => {
+        exec(`curl -o "${__dirname}/../../public/docs/patterns/${id}.pdf" "http://patternlibrary.kegel.net/PatternLibraryFunctions.aspx?OPCODE=DOWNLOADFILE&ID=${id}&Type=2"`, (err) => {
+            if (err) {
+                console.log('err', err);
+                resolve();
+                return;
+            }
+
+            console.log('PDF Saved!');
             resolve();
         });
     });

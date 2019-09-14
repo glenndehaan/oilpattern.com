@@ -87,6 +87,22 @@ export default class Pattern extends Component {
                                             <td className="mdl-data-table__cell--non-numeric">{this.state.content.category}</td>
                                         </tr>
                                         <tr>
+                                            <td className="mdl-data-table__cell--non-numeric">Distance</td>
+                                            <td className="mdl-data-table__cell--non-numeric">{this.state.content.distance}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="mdl-data-table__cell--non-numeric">Volume</td>
+                                            <td className="mdl-data-table__cell--non-numeric">{this.state.content.volume} mL</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="mdl-data-table__cell--non-numeric">Forward</td>
+                                            <td className="mdl-data-table__cell--non-numeric">{this.state.content.forward} mL</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="mdl-data-table__cell--non-numeric">Reverse</td>
+                                            <td className="mdl-data-table__cell--non-numeric">{this.state.content.reverse} mL</td>
+                                        </tr>
+                                        <tr>
                                             <td className="mdl-data-table__cell--non-numeric">Description</td>
                                             <td className="mdl-data-table__cell--non-numeric" dangerouslySetInnerHTML={{__html: this.state.content.description}}/>
                                         </tr>
