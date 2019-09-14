@@ -110,7 +110,7 @@ export default class Pattern extends Component {
                                 </table>
                             </div>
                             <div className="mdl-cell mdl-cell--8-col">
-                                <img className="pattern-image" src="/images/patterns/plutonium_2239.jpg"/>
+                                <img className="pattern-image" src={`/images/patterns/${this.state.content.id}_1.jpg`}/>
                             </div>
                         </div>
                     </div>

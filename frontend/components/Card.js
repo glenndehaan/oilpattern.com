@@ -11,7 +11,7 @@ export default class Card extends Component {
     render() {
         return (
             <div className="card-wide mdl-card mdl-shadow--2dp">
-                <div className="mdl-card__title">
+                <div className="mdl-card__title" style={{background: `url("../images/patterns/${this.props.slug}_1.jpg") center / cover`}}>
                     <h2 className="mdl-card__title-text">
                         {this.props.title}
                     </h2>

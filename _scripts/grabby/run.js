@@ -4,6 +4,7 @@
 const fs = require('fs');
 const { exec } = require('child_process');
 const { parse } = require('node-html-parser');
+const PDF2Pic = require("pdf2pic");
 const request = require('request');
 
 /**
@@ -60,6 +61,7 @@ const getData =  (url, id) => {
                 });
 
                 await pdf(`http://patternlibrary.kegel.net/PatternLibraryFunctions.aspx?OPCODE=DOWNLOADFILE&ID=${id}&Type=2"`, id);
+                await image(id);
             } else {
                 console.log('No content here!!');
             }
@@ -87,6 +89,32 @@ const pdf = (url, id) => {
             }
 
             console.log('PDF Saved!');
+            resolve();
+        });
+    });
+};
+
+/**
+ * Save an PDF -> Image
+ *
+ * @param id
+ * @return {Promise<unknown>}
+ */
+const image = (id) => {
+    return new Promise((resolve) => {
+        const pdf2pic = new PDF2Pic({
+            density: 300,
+            savename: id,
+            savedir: `${__dirname}/../../public/images/patterns`,
+            format: "jpg",
+            size: "2480x3508"
+        });
+
+        pdf2pic.convertBulk(`${__dirname}/../../public/docs/patterns/${id}.pdf`, [1]).then(() => {
+            console.log("Image saved!");
+            resolve();
+        }).catch(() => {
+            console.log('Image error!');
             resolve();
         });
     });
