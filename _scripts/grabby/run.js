@@ -126,13 +126,13 @@ const image = (id) => {
  * @return {Promise<void>}
  */
 const run = async () => {
-    for (let item = 800; item < 810; item++) {
+    for (let item = 500; item < 900; item++) {
         const url = `http://patternlibrary.kegel.net/PatternLibraryPattern.aspx?ID=${item}`;
         await getData(url, item);
     }
 
     console.log('Writing config file...');
-    fs.writeFileSync(`${__dirname}/../../frontend/config/patterns.json`, JSON.stringify(config));
+    fs.writeFileSync(`${__dirname}/../../frontend/config/patterns.json`, JSON.stringify(config.reverse()));
 };
 
 run();
