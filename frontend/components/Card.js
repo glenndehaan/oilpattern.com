@@ -1,5 +1,6 @@
 import {h, Component} from 'preact';
 
+import stringUtils from '../utils/strings';
 import Link from "./Link";
 
 export default class Card extends Component {
@@ -16,7 +17,9 @@ export default class Card extends Component {
                         {this.props.title}
                     </h2>
                 </div>
-                <div className="mdl-card__supporting-text" dangerouslySetInnerHTML={{__html: this.props.children}}/>
+                <div className="mdl-card__supporting-text">
+                    {stringUtils.truncate(stringUtils.stripHtml(this.props.children))}
+                </div>
                 {this.props.buttons &&
                     <div className="mdl-card__actions mdl-card--border">
                         {this.props.buttons.map((button, key) => {

@@ -2,6 +2,8 @@ import {h, Component} from 'preact';
 
 import config from '../config';
 import {pageIntro} from '../utils/transitions';
+import stringUtils from '../utils/strings';
+
 import Link from "../components/Link";
 
 export default class Pattern extends Component {
@@ -104,7 +106,9 @@ export default class Pattern extends Component {
                                         </tr>
                                         <tr>
                                             <td className="mdl-data-table__cell--non-numeric">Description</td>
-                                            <td className="mdl-data-table__cell--non-numeric" dangerouslySetInnerHTML={{__html: this.state.content.description}}/>
+                                            <td className="mdl-data-table__cell--non-numeric">
+                                                {stringUtils.stripHtml(this.state.content.description)}
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
