@@ -34,3 +34,16 @@
     text-decoration: none;
   }
 }
+
+.list {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.row {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}

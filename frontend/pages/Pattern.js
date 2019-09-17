@@ -70,7 +70,7 @@ export default class Pattern extends Component {
                 <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
                     <div className="page-content">
                         <div className="mdl-grid">
-                            <div className="mdl-cell mdl-cell--4-col">
+                            <div className="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
                                 <Link href="/">
                                     <button className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
                                         Back

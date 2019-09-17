@@ -89,6 +89,7 @@
     "webpack-dev-server": "^3.4.1"
   },
   "devDependencies": {
+    "imagemagick": "^0.1.3",
     "node-html-parser": "^1.1.16",
     "pdf2pic": "^1.3.9",
     "request": "^2.88.0"

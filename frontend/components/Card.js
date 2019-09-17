@@ -1,9 +1,60 @@
 import {h, Component} from 'preact';
 
 import stringUtils from '../utils/strings';
+import cache from '../utils/cache';
 import Link from "./Link";
 
 export default class Card extends Component {
+    /**
+     * Constructor
+     */
+    constructor() {
+        super();
+
+        this.state = {
+            image: {
+                blob: null,
+                originalSource: null,
+                source: null,
+                extension: null
+            }
+        };
+
+        this.observer = null;
+        this.card = null;
+    }
+
+    /**
+     * Runs then component mounts
+     */
+    componentDidMount() {
+        this.observer = new IntersectionObserver((entries) => this.intersectionCallback(entries));
+        this.observer.observe(this.card);
+    }
+
+    intersectionCallback(entries) {
+        entries.forEach((entry) => {
+            const visiblePct = entry.intersectionRatio;
+
+            if(visiblePct > 0) {
+                cache.get(`/images/patterns/small/${this.props.slug}_1.jpg`, (image) => {
+                    this.setState({
+                        image
+                    });
+                });
+            } else {
+                this.setState({
+                    image: {
+                        blob: null,
+                        originalSource: null,
+                        source: null,
+                        extension: null
+                    }
+                });
+            }
+        });
+    }
+
     /**
      * Preact render function
      *
@@ -11,8 +62,8 @@ export default class Card extends Component {
      */
     render() {
         return (
-            <div className="card-wide mdl-card mdl-shadow--2dp">
-                <div className="mdl-card__title" style={{background: `url("../images/patterns/${this.props.slug}_1.jpg") center / cover`}}>
+            <div className="card-wide mdl-card mdl-shadow--2dp" ref={(c) => this.card = c}>
+                <div className="mdl-card__title" style={{background: `${this.state.image.source !== null ? `url(${this.state.image.source})` : 'none'} center / cover`}}>
                     <h2 className="mdl-card__title-text">
                         {this.props.title}
                     </h2>
