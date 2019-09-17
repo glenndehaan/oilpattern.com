@@ -23,7 +23,6 @@ class Home extends Component {
      */
     componentDidMount(){
         document.title = `Home | ${config.general.siteName}`;
-        window.componentHandler.upgradeDom();
 
         //Start intro when the component will appear
         pageIntro(() => {}, this.domElements);

@@ -27,7 +27,6 @@ export default class Pattern extends Component {
      */
     componentDidMount(){
         document.title = `Pattern | ${config.general.siteName}`;
-        window.componentHandler.upgradeDom();
 
         const urlParts = this.props.url.split('/');
         this.setState({
