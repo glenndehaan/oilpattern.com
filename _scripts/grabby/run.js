@@ -2,8 +2,8 @@
  * Import vendor packages
  */
 const fs = require('fs');
-const { exec } = require('child_process');
-const { parse } = require('node-html-parser');
+const {exec} = require('child_process');
+const {parse} = require('node-html-parser');
 const PDF2Pic = require("pdf2pic");
 const request = require('request');
 
@@ -18,19 +18,19 @@ const config = [];
  * @param url
  * @param id
  */
-const getData =  (url, id) => {
+const getData = (url, id) => {
     return new Promise((resolve) => {
         request(url, async (error, response, body) => {
             console.log('------------------------------------------------------------------------------------------');
             console.log('url', url);
 
-            if(error) {
+            if (error) {
                 console.log('error:', error);
                 resolve();
                 return;
             }
 
-            if(response.statusCode === 200) {
+            if (response.statusCode === 200) {
                 const root = parse(body).removeWhitespace();
                 const title = root.querySelector('.right_bar h2').text;
                 const category = root.querySelector('.cat h2 span span').text;
@@ -49,19 +49,25 @@ const getData =  (url, id) => {
                 console.log('volume', volume);
                 console.log('forward', forward);
                 console.log('reverse', reverse);
-                config.push({
-                    id,
-                    title,
-                    category,
-                    description,
-                    distance,
-                    volume,
-                    forward,
-                    reverse
-                });
 
                 await pdf(`http://patternlibrary.kegel.net/PatternLibraryFunctions.aspx?OPCODE=DOWNLOADFILE&ID=${id}&Type=2"`, id);
-                await image(id);
+                const imageResult = await image(id);
+
+                if (imageResult) {
+                    console.log('Saving Item...');
+                    config.push({
+                        id,
+                        title,
+                        category,
+                        description,
+                        distance,
+                        volume,
+                        forward,
+                        reverse
+                    });
+                } else {
+                    console.log('Skipping Item...');
+                }
             } else {
                 console.log('No content here!!');
             }
@@ -102,21 +108,26 @@ const pdf = (url, id) => {
  */
 const image = (id) => {
     return new Promise((resolve) => {
-        const pdf2pic = new PDF2Pic({
-            density: 300,
-            savename: id,
-            savedir: `${__dirname}/../../public/images/patterns`,
-            format: "jpg",
-            size: "2480x3508"
-        });
+        try {
+            const pdf2pic = new PDF2Pic({
+                density: 300,
+                savename: id,
+                savedir: `${__dirname}/../../public/images/patterns`,
+                format: "jpg",
+                size: "2480x3508"
+            });
 
-        pdf2pic.convertBulk(`${__dirname}/../../public/docs/patterns/${id}.pdf`, [1]).then(() => {
-            console.log("Image saved!");
-            resolve();
-        }).catch(() => {
+            pdf2pic.convertBulk(`${__dirname}/../../public/docs/patterns/${id}.pdf`, [1]).then(() => {
+                console.log("Image saved!");
+                resolve(true);
+            }).catch(() => {
+                console.log('Image error!');
+                resolve(false);
+            });
+        } catch (e) {
             console.log('Image error!');
-            resolve();
-        });
+            resolve(false);
+        }
     });
 };
 

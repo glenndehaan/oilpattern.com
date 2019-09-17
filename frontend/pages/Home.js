@@ -4,6 +4,7 @@ import {connect} from "unistore/preact";
 import config from '../config';
 import {pageIntro} from '../utils/transitions';
 import Card from "../components/Card";
+import Snackbar from "../components/Snackbar";
 
 class Home extends Component {
     /**
@@ -36,6 +37,7 @@ class Home extends Component {
     render() {
         return (
             <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
+                <Snackbar/>
                 <div className="page-content">
                     <div className="mdl-grid">
                         {config.patterns.map((pattern, key) => {

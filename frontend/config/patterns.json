@@ -1,5 +1,15 @@
 [
   {
+    "id": 889,
+    "title": "Kegel Sport Series - BOARDWALK V2 - 2135",
+    "category": "Kegel Navigation V2 Sport Series",
+    "description": "<p></p>",
+    "distance": "35",
+    "volume": "28.25",
+    "forward": "14.90",
+    "reverse": "13.35"
+  },
+  {
     "id": 888,
     "title": "Kegel Challenge Series - BEATEN PATH V2 - 5741",
     "category": "Kegel Navigation V2 Challenge Series",
@@ -8,46 +18,6 @@
     "volume": "26.05",
     "forward": "17.55",
     "reverse": "8.50"
-  },
-  {
-    "id": 887,
-    "title": "Kegel Challenge Series - BEATEN PATH V2 - 5741",
-    "category": "Kegel Navigation V2 Challenge Series",
-    "description": "<p></p><p>BEATEN PATH - 4541 This 41 foot pattern is much like the MIDDLE ROAD but two feet longer. Because of this added length, the options of attack will be a little more limited and the pattern will usually play where the most worn or highest friction part of the lane surface is. The players who excel in reading the lanes will easily find the BEATEN PATH and make this pattern look relatively easy. If you veer too far off the BEATEN PATH, it will play more difficult.</p>",
-    "distance": "41",
-    "volume": "26.05",
-    "forward": "17.55",
-    "reverse": "8.50"
-  },
-  {
-    "id": 886,
-    "title": "Kegel Challenge Series - BEATEN PATH V2 - 5741",
-    "category": "Kegel Navigation V2 Challenge Series",
-    "description": "<p></p><p>BEATEN PATH - 4541 This 41 foot pattern is much like the MIDDLE ROAD but two feet longer. Because of this added length, the options of attack will be a little more limited and the pattern will usually play where the most worn or highest friction part of the lane surface is. The players who excel in reading the lanes will easily find the BEATEN PATH and make this pattern look relatively easy. If you veer too far off the BEATEN PATH, it will play more difficult.</p>",
-    "distance": "41",
-    "volume": "26.05",
-    "forward": "17.55",
-    "reverse": "8.50"
-  },
-  {
-    "id": 885,
-    "title": "Kegel Recreation Series - EASY STREET - 7938",
-    "category": "Kegel Navigation V2 Recreation Series",
-    "description": "<p></p>",
-    "distance": "39",
-    "volume": "22.40",
-    "forward": "12.80",
-    "reverse": "9.60"
-  },
-  {
-    "id": 884,
-    "title": "Kegel Recreation Series - EASY STREET - 7938",
-    "category": "Kegel Navigation V2 Recreation Series",
-    "description": "<p></p>",
-    "distance": "39",
-    "volume": "22.40",
-    "forward": "12.80",
-    "reverse": "9.60"
   },
   {
     "id": 883,
@@ -208,16 +178,6 @@
     "volume": "26.55",
     "forward": "23.65",
     "reverse": "2.90"
-  },
-  {
-    "id": 863,
-    "title": "2016 ETBF Women's Championship",
-    "category": "ETBF - European Tenpin Bowling Federation",
-    "description": "<p></p>",
-    "distance": "42",
-    "volume": ".00",
-    "forward": ".02",
-    "reverse": ".01"
   },
   {
     "id": 862,
@@ -610,36 +570,6 @@
     "reverse": "2.70"
   },
   {
-    "id": 818,
-    "title": "2014 Teen Masters Skills Challenge - Short_DB",
-    "category": "Low Volume Patterns",
-    "description": "<p></p>",
-    "distance": "28",
-    "volume": "7.00",
-    "forward": "3.47",
-    "reverse": "3.54"
-  },
-  {
-    "id": 817,
-    "title": "2014 Teen Masters Skills Challenge - Long_NDB",
-    "category": "Low Volume Patterns",
-    "description": "<p></p>",
-    "distance": "36",
-    "volume": "7.28",
-    "forward": "4.59",
-    "reverse": "2.70"
-  },
-  {
-    "id": 816,
-    "title": "2014 Teen Masters Skills Challenge - Short_NDB",
-    "category": "Low Volume Patterns",
-    "description": "<p></p>",
-    "distance": "28",
-    "volume": "7.00",
-    "forward": "3.47",
-    "reverse": "3.54"
-  },
-  {
     "id": 815,
     "title": "2014 USBC Open Championships - D/S",
     "category": "USBC - United States Bowling Congress",
@@ -768,16 +698,6 @@
     "volume": "24.90",
     "forward": "15.25",
     "reverse": "9.65"
-  },
-  {
-    "id": 801,
-    "title": "2013 26th European Youth Championships",
-    "category": "ETBF - European Tenpin Bowling Federation",
-    "description": "<p></p>",
-    "distance": "39",
-    "volume": "24.60",
-    "forward": "12.16",
-    "reverse": "12.44"
   },
   {
     "id": 800,
@@ -2960,116 +2880,6 @@
     "reverse": "11.05"
   },
   {
-    "id": 544,
-    "title": "2005 WTBA World Ranking Masters - Short (Transfer Roller Conversion)",
-    "category": "WTBA - World Tenpin Bowling Association",
-    "description": "<p>Pattern converted to the Kegel TRANSFER ROLLER system. NOT to be used for machines with the Transfer Brush system.</p>",
-    "distance": "35",
-    "volume": "20.76",
-    "forward": "12.88",
-    "reverse": "7.88"
-  },
-  {
-    "id": 543,
-    "title": "2005 WTBA World Ranking Masters - Long (Transfer Roller Conversion)",
-    "category": "WTBA - World Tenpin Bowling Association",
-    "description": "<p>Pattern converted to the Kegel TRANSFER ROLLER system. NOT to be used for machines with the Transfer Brush system.</p>",
-    "distance": "43",
-    "volume": "21.32",
-    "forward": "14.49",
-    "reverse": "6.83"
-  },
-  {
-    "id": 542,
-    "title": "2005 WTBA World Ranking Masters - Short",
-    "category": "WTBA - World Tenpin Bowling Association",
-    "description": "<p></p>",
-    "distance": "35",
-    "volume": "20.76",
-    "forward": "8.84",
-    "reverse": "11.92"
-  },
-  {
-    "id": 541,
-    "title": "2005 WTBA World Ranking Masters - Long",
-    "category": "WTBA - World Tenpin Bowling Association",
-    "description": "<p></p>",
-    "distance": "43",
-    "volume": "20.02",
-    "forward": "8.86",
-    "reverse": "11.17"
-  },
-  {
-    "id": 537,
-    "title": "2007 ETBF European Youth Championships",
-    "category": "ETBF - European Tenpin Bowling Federation",
-    "description": "<p>Event was contested on Brunswick Pro Anvilane. Lane machine was a Kegel Kustodian Walker using Infinity conditioner. Medium scoring pace and shown to be good for many styles of play.</p>",
-    "distance": "39",
-    "volume": "22.13",
-    "forward": "11.23",
-    "reverse": "10.90"
-  },
-  {
-    "id": 535,
-    "title": "2007 ITC Sectionals",
-    "category": "Other Tournaments",
-    "description": "<p></p>",
-    "distance": "38",
-    "volume": "25.16",
-    "forward": "11.96",
-    "reverse": "13.20"
-  },
-  {
-    "id": 534,
-    "title": "2007 ITC Singles Championships",
-    "category": "Other Tournaments",
-    "description": "<p></p>",
-    "distance": "40",
-    "volume": "20.84",
-    "forward": "9.88",
-    "reverse": "10.96"
-  },
-  {
-    "id": 533,
-    "title": "2007 Pan-Am Games  - Long",
-    "category": "PABCON - Pan American Bowling Confederation",
-    "description": "<p></p>",
-    "distance": "45",
-    "volume": "21.84",
-    "forward": "9.88",
-    "reverse": "11.96"
-  },
-  {
-    "id": 532,
-    "title": "2007 Pan-Am Games  -  Short",
-    "category": "PABCON - Pan American Bowling Confederation",
-    "description": "<p></p>",
-    "distance": "35",
-    "volume": "21.32",
-    "forward": "11.40",
-    "reverse": "9.92"
-  },
-  {
-    "id": 531,
-    "title": "2007 WTBA Men's American Zone Championships - Long",
-    "category": "PABCON - Pan American Bowling Confederation",
-    "description": "<p></p>",
-    "distance": "44",
-    "volume": "24.21",
-    "forward": "12.11",
-    "reverse": "12.11"
-  },
-  {
-    "id": 530,
-    "title": "2007 WTBA Men's American Zone Championships - Short",
-    "category": "PABCON - Pan American Bowling Confederation",
-    "description": "<p></p>",
-    "distance": "35",
-    "volume": "23.99",
-    "forward": "12.83",
-    "reverse": "11.16"
-  },
-  {
     "id": 529,
     "title": "2007 EBT 04 - 5th Catalonia Open Trofeo Galasa",
     "category": "EBT - European Bowling Tour",
@@ -3140,16 +2950,6 @@
     "reverse": "12.35"
   },
   {
-    "id": 522,
-    "title": "2007 USBC Open Championships (Transfer Roller Conversion)",
-    "category": "USBC - United States Bowling Congress",
-    "description": "<p>Pattern converted to the Kegel TRANSFER ROLLER system. NOT to be used for machines with the Transfer Brush system.</p>",
-    "distance": "40",
-    "volume": "23.24",
-    "forward": "13.68",
-    "reverse": "9.56"
-  },
-  {
     "id": 520,
     "title": "2006 EBT Viernheim Open",
     "category": "EBT - European Bowling Tour",
@@ -3168,45 +2968,5 @@
     "volume": "23.40",
     "forward": "10.50",
     "reverse": "12.90"
-  },
-  {
-    "id": 514,
-    "title": "Transfer Brush - Glow Bowling/Open Play Pattern",
-    "category": "Low Volume Patterns",
-    "description": "<p>Designed for use in machines with the TRANSFER BRUSH conditioning system. Kustodian Walker, Ion, K Plus or transfer brush upgraded machines.</p>",
-    "distance": "36",
-    "volume": "12.75",
-    "forward": "5.95",
-    "reverse": "6.80"
-  },
-  {
-    "id": 512,
-    "title": "2006 USBC Junior Gold-Long",
-    "category": "USBC - United States Bowling Congress",
-    "description": "<p></p>",
-    "distance": "44",
-    "volume": "25.65",
-    "forward": "14.20",
-    "reverse": "11.45"
-  },
-  {
-    "id": 511,
-    "title": "2006 USBC Junior Gold-Medium",
-    "category": "USBC - United States Bowling Congress",
-    "description": "<p></p>",
-    "distance": "40",
-    "volume": "25.45",
-    "forward": "11.10",
-    "reverse": "14.35"
-  },
-  {
-    "id": 510,
-    "title": "2006 USBC Junior Gold-Short",
-    "category": "USBC - United States Bowling Congress",
-    "description": "<p></p>",
-    "distance": "36",
-    "volume": "22.30",
-    "forward": "11.05",
-    "reverse": "11.25"
   }
 ]
