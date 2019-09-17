@@ -35,15 +35,14 @@
   }
 }
 
-.list {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
+.mdl-layout__header-row {
+  padding: 0 15px 0 20px;
 }
 
-.row {
-  position: relative;
-  height: 300px;
-  overflow: hidden;
+.mdl-layout__content {
+  opacity: 0;
+
+  &.show {
+    opacity: 1;
+  }
 }

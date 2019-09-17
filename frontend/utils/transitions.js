@@ -15,6 +15,7 @@ let firstPageLoad = true;
  */
 export const pageIntro = (callback, elements) => {
     if (firstPageLoad) {
+        elements.mainContainer.classList.add("show");
         firstPageLoad = false;
         return;
     }
@@ -40,6 +41,7 @@ export const pageIntro = (callback, elements) => {
  */
 export const pageOutro = (callback, elements) => {
     if (firstPageLoad) {
+        elements.mainContainer.classList.add("show");
         firstPageLoad = false;
         return;
     }
@@ -76,19 +78,16 @@ const transition = (type, callback, elements) => {
     });
 
     let opacity = [];
-    let y = [];
     let ease = '';
     let duration = 300;
 
     if (type === 'intro') {
         opacity = [0, 1];
-        y = [-20, 0];
         ease = 'easeOutQuart';
         duration = 800;
     }
     if (type === 'outro') {
         opacity = [1, 0];
-        y = [0, 20];
         ease = 'easeInQuart';
     }
 
@@ -96,7 +95,6 @@ const transition = (type, callback, elements) => {
         targets: elements.mainContainer,
         duration: duration,
         opacity: opacity,
-        translateY: y,
         easing: ease
     }, 0);
 };
