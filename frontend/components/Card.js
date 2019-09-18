@@ -76,13 +76,13 @@ export default class Card extends Component {
                         {this.props.buttons.map((button, key) => {
                             if(button === 'View') {
                                 return (
-                                    <Link key={key} href={`/pattern/${this.props.slug}`} className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                    <Link key={key} href={`/pattern/${this.props.slug}`} className="mdl-button mdl-button--colored">
                                         {button}
                                     </Link>
                                 )
                             } else {
                                 return (
-                                    <a key={key} href={`/docs/patterns/${this.props.slug}.pdf`} download={`${this.props.slug}.pdf`} className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                    <a key={key} href={`/docs/patterns/${this.props.slug}.pdf`} download={`${this.props.slug}.pdf`} className="mdl-button mdl-button--colored">
                                         {button}
                                     </a>
                                 )
@@ -92,7 +92,7 @@ export default class Card extends Component {
                 }
                 {this.props.topIcon &&
                     <div className="mdl-card__menu">
-                        <button className="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                        <button className="mdl-button mdl-button--icon">
                             <i className="material-icons">{this.props.topIcon}</i>
                         </button>
                     </div>

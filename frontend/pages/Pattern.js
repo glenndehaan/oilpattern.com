@@ -71,13 +71,13 @@ export default class Pattern extends Component {
                         <div className="mdl-grid">
                             <div className="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
                                 <Link href="/">
-                                    <button className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                                    <button className="mdl-button mdl-button--raised mdl-button--colored">
                                         Back
                                     </button>
                                 </Link>
                                 <br/>
                                 <br/>
-                                <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                                <table className="mdl-data-table mdl-shadow--2dp">
                                     <tbody>
                                         <tr>
                                             <td className="mdl-data-table__cell--non-numeric">Title</td>

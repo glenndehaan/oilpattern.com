@@ -28,7 +28,7 @@ export default class Snackbar extends Component {
      */
     render() {
         return (
-            <div className="mdl-js-snackbar mdl-snackbar" ref={(c) => this.container = c}>
+            <div className="mdl-snackbar" ref={(c) => this.container = c}>
                 <div className="mdl-snackbar__text">Test</div>
                 <button className="mdl-snackbar__action" type="button"/>
             </div>
