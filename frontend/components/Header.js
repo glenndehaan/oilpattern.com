@@ -76,6 +76,9 @@ class Header extends Component {
                 <Snackbar visible={!this.props.online}>
                     App is offline!
                 </Snackbar>
+                <Snackbar visible={this.props.snackbar.active}>
+                    {this.props.snackbar.children}
+                </Snackbar>
                 <div className="mdl-layout__header-row">
                     <span className="mdl-layout-title"><Link href="/">{config.general.siteName}</Link></span>
                     <div className="mdl-layout-spacer"/>
@@ -98,4 +101,4 @@ class Header extends Component {
 /**
  * Connect the store to the component
  */
-export default connect('router,search,online', actions)(Header);
+export default connect('router,search,online,snackbar', actions)(Header);

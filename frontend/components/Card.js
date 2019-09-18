@@ -1,6 +1,7 @@
 import {h, Component} from 'preact';
 import {connect} from "unistore/preact";
 
+import {actions} from "../modules/store";
 import stringUtils from '../utils/strings';
 import cache from '../utils/cache';
 import Link from "./Link";
@@ -62,6 +63,32 @@ class Card extends Component {
     }
 
     /**
+     * Share an oilpattern
+     */
+    share() {
+        if(typeof window.navigator.share !== "undefined") {
+            navigator.share({
+                title: `Oil Pattern ${this.props.slug}`,
+                text: 'Checkout this oil pattern',
+                url: `https://oilpattern.com/pattern/${this.props.slug}`
+            });
+        } else {
+            stringUtils.copyStringToClipboard(`https://oilpattern.com/pattern/${this.props.slug}`);
+            this.props.updateSnackbar({
+                active: true,
+                children: "Link copied to clipboard"
+            });
+
+            setTimeout(() => {
+                this.props.updateSnackbar({
+                    active: false,
+                    children: null
+                });
+            }, 2500);
+        }
+    }
+
+    /**
      * Preact render function
      *
      * @returns {*}
@@ -98,7 +125,7 @@ class Card extends Component {
                 }
                 {this.props.topIcon &&
                     <div className="mdl-card__menu">
-                        <button className="mdl-button mdl-button--icon">
+                        <button className="mdl-button mdl-button--icon" onClick={() => this.share()}>
                             <i className="material-icons">{this.props.topIcon}</i>
                         </button>
                     </div>
@@ -111,4 +138,4 @@ class Card extends Component {
 /**
  * Connect the store to the component
  */
-export default connect('online')(Card);
+export default connect('online', actions)(Card);

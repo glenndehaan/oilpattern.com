@@ -16,7 +16,11 @@ const createStore = () => {
             url: window.location.pathname
         },
         search: '',
-        online: typeof window.navigator.onLine !== "undefined" ? window.navigator.onLine : true
+        online: typeof window.navigator.onLine !== "undefined" ? window.navigator.onLine : true,
+        snackbar: {
+            active: false,
+            children: null
+        }
     };
 
     return process.env.NODE_ENV === 'production' ?  createUnistore(initialState) : devtools(createUnistore(initialState));
@@ -29,6 +33,11 @@ const createStore = () => {
  */
 const actions = () => {
     return {
+        updateSnackbar(state, payload) {
+            return {
+                snackbar: payload
+            };
+        },
         updateOnlineState(state, payload) {
             return {
                 online: payload
