@@ -32,6 +32,11 @@ export default class Card extends Component {
         this.observer.observe(this.card);
     }
 
+    /**
+     * Checks for intersection events
+     *
+     * @param entries
+     */
     intersectionCallback(entries) {
         entries.forEach((entry) => {
             const visiblePct = entry.intersectionRatio;

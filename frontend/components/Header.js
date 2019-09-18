@@ -12,7 +12,28 @@ class Header extends Component {
     constructor() {
         super();
 
+        this.state = {
+            searchOpen: false
+        };
+
         this.searchBar = null;
+        this.container = null;
+    }
+
+    /**
+     * Runs then component mounts
+     */
+    componentDidMount() {
+        document.body.addEventListener("click", (e) => {
+            if(e.path) {
+                console.log('e.path', e.path);
+                if (!e.path.includes(this.container) && this.searchBar.value === '') {
+                    this.setState({
+                        searchOpen: false
+                    });
+                }
+            }
+        });
     }
 
     /**
@@ -20,6 +41,17 @@ class Header extends Component {
      */
     search() {
         this.props.updateSearch(this.searchBar.value);
+    }
+
+    /**
+     * Opens/closes the search bar
+     *
+     * @param state
+     */
+    searchToggle(state) {
+        this.setState({
+            searchOpen: state
+        })
     }
 
     /**
@@ -34,9 +66,9 @@ class Header extends Component {
                     <span className="mdl-layout-title"><Link href="/">{config.general.siteName}</Link></span>
                     <div className="mdl-layout-spacer"/>
                     {this.props.router.url === '/' &&
-                        <div className="mdl-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right is-focused">
+                        <div className={`mdl-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right ${this.state.searchOpen ? 'is-focused' : ''}`} ref={e => this.container = e}>
                             <label className="mdl-button mdl-button--icon" htmlFor="waterfall-exp">
-                                <i className="material-icons">search</i>
+                                <i className="material-icons" onClick={() => this.searchToggle(true)}>search</i>
                             </label>
                             <div className="mdl-textfield__expandable-holder">
                                 <input className="mdl-textfield__input" type="text" name="sample" id="waterfall-exp" value={this.props.search} ref={(c) => this.searchBar = c} onKeyUp={() => this.search()}/>
