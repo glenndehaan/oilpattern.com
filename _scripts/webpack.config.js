@@ -3,10 +3,13 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const SitemapWebpackPlugin = require('sitemap-webpack-plugin').default;
 const CopyPlugin = require('copy-webpack-plugin');
 const ReplaceInFileWebpackPlugin = require('replace-in-file-webpack-plugin');
 const CreateFileWebpack = require('create-file-webpack');
 const uuid = require('uuid/v4');
+
+const patterns = require(`${__dirname}/../frontend/config/patterns.json`);
 
 const projectRoot = path.join(__dirname, '../');
 const buildDirectory = path.join(projectRoot, 'frontend');
@@ -14,6 +17,33 @@ const distDirectory = path.join(projectRoot, 'build');
 
 const ENV = process.env.NODE_ENV || 'development';
 
+/**
+ * Define application paths
+ */
+const paths = [
+    {
+        path: '/',
+        priority: '1.0',
+        changeFreq: 'daily'
+    }
+];
+
+/**
+ * Map patterns to paths
+ */
+patterns.map((pattern) => {
+    paths.push({
+        path: `/pattern/${pattern.id}`,
+        priority: '0.8',
+        changeFreq: 'monthly'
+    });
+});
+
+/**
+ * Export webpack config
+ *
+ * @param env
+ */
 module.exports = (env) => {
     const webpackSettings = {
         performance: {
@@ -79,7 +109,6 @@ module.exports = (env) => {
             new CopyPlugin([
                 {from: 'public/kill-switch.txt'},
                 {from: 'public/manifest.json'},
-                {from: 'public/sitemap.xml'},
                 {from: 'public/robots.txt'},
                 {from: 'public/sw.js'},
                 {from: 'public/docs/patterns/*.*', to: 'docs/patterns/', flatten: true},
@@ -94,6 +123,9 @@ module.exports = (env) => {
             }),
             new MiniCssExtractPlugin({
                 filename: 'dist/[name].[hash:6].css'
+            }),
+            new SitemapWebpackPlugin('https://oilpattern.com', paths, {
+                skipGzip: true
             })
         ]
     };

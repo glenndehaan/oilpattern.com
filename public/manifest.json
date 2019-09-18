@@ -1,6 +1,6 @@
 {
-  "name": "Oilpatterns",
-  "short_name": "Oilpatterns",
+  "name": "Oilpattern",
+  "short_name": "Oilpattern.com",
   "icons": [
     {
       "src": "./images/icon/logo_144x144.png",
@@ -22,6 +22,6 @@
   "scope": "./",
   "display": "standalone",
   "rotation": "portrait",
-  "background_color": "#F03A00",
-  "theme_color": "#F03A00"
+  "background_color": "#3F51B5",
+  "theme_color": "#FFFFFF"
 }
