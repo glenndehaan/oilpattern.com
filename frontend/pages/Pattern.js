@@ -68,15 +68,14 @@ export default class Pattern extends Component {
             return (
                 <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
                     <div className="page-content">
+                        <Link href="/">
+                            <button className="mdl-button mdl-button--fab fixed-button mdl-color--primary mdl-color-text--primary-contrast">
+                                <i className="material-icons">close</i>
+                            </button>
+                        </Link>
                         <div className="mdl-grid">
                             <div className="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
-                                <Link href="/">
-                                    <button className="mdl-button mdl-button--raised mdl-button--colored">
-                                        Back
-                                    </button>
-                                </Link>
-                                <br/>
-                                <br/>
+                                <h5>Oil Pattern Specifications</h5>
                                 <table className="mdl-data-table mdl-shadow--2dp">
                                     <tbody>
                                         <tr>
