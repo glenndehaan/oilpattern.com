@@ -1,10 +1,11 @@
 import {h, Component} from 'preact';
+import {connect} from "unistore/preact";
 
 import stringUtils from '../utils/strings';
 import cache from '../utils/cache';
 import Link from "./Link";
 
-export default class Card extends Component {
+class Card extends Component {
     /**
      * Constructor
      */
@@ -87,7 +88,7 @@ export default class Card extends Component {
                                 )
                             } else {
                                 return (
-                                    <a key={key} href={`/docs/patterns/${this.props.slug}.pdf`} download={`${this.props.slug}.pdf`} className="mdl-button mdl-button--colored">
+                                    <a key={key} href={this.props.online && `/docs/patterns/${this.props.slug}.pdf`} download={`${this.props.slug}.pdf`} disabled={!this.props.online} className="mdl-button mdl-button--colored">
                                         {button}
                                     </a>
                                 )
@@ -106,3 +107,8 @@ export default class Card extends Component {
         );
     }
 }
+
+/**
+ * Connect the store to the component
+ */
+export default connect('online')(Card);

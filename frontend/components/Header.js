@@ -4,6 +4,7 @@ import { connect } from 'unistore/preact';
 import {actions} from "../modules/store";
 import config from '../config';
 import Link from "./Link";
+import Snackbar from "./Snackbar";
 
 class Header extends Component {
     /**
@@ -24,16 +25,26 @@ class Header extends Component {
      * Runs then component mounts
      */
     componentDidMount() {
-        document.body.addEventListener("click", (e) => {
-            if(e.path) {
-                console.log('e.path', e.path);
+        document.body.addEventListener("click", (e) => this.searchHandler(e));
+        window.addEventListener('online', () => this.props.updateOnlineState(true));
+        window.addEventListener('offline', () => this.props.updateOnlineState(false));
+    }
+
+    /**
+     * Checks if we need to close the search bar
+     *
+     * @param e
+     */
+    searchHandler(e) {
+        if(e.path) {
+            if(this.searchBar) {
                 if (!e.path.includes(this.container) && this.searchBar.value === '') {
                     this.setState({
                         searchOpen: false
                     });
                 }
             }
-        });
+        }
     }
 
     /**
@@ -62,6 +73,9 @@ class Header extends Component {
     render() {
         return (
             <header className="mdl-layout__header">
+                <Snackbar visible={!this.props.online}>
+                    App is offline!
+                </Snackbar>
                 <div className="mdl-layout__header-row">
                     <span className="mdl-layout-title"><Link href="/">{config.general.siteName}</Link></span>
                     <div className="mdl-layout-spacer"/>
@@ -84,4 +98,4 @@ class Header extends Component {
 /**
  * Connect the store to the component
  */
-export default connect('router,search', actions)(Header);
+export default connect('router,search,online', actions)(Header);

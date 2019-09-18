@@ -15,7 +15,8 @@ const createStore = () => {
             previous: null,
             url: window.location.pathname
         },
-        search: ''
+        search: '',
+        online: typeof window.navigator.onLine !== "undefined" ? window.navigator.onLine : true
     };
 
     return process.env.NODE_ENV === 'production' ?  createUnistore(initialState) : devtools(createUnistore(initialState));
@@ -28,6 +29,11 @@ const createStore = () => {
  */
 const actions = () => {
     return {
+        updateOnlineState(state, payload) {
+            return {
+                online: payload
+            };
+        },
         updateSearch(state, payload) {
             return {
                 search: payload

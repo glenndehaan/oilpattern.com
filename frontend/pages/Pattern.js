@@ -14,7 +14,8 @@ export default class Pattern extends Component {
         super();
 
         this.state = {
-            content: false
+            content: false,
+            imageOffline: false
         };
 
         this.domElements = {
@@ -56,6 +57,16 @@ export default class Pattern extends Component {
         }
 
         return false;
+    }
+
+    /**
+     * Display the fallback since the image is not available
+     */
+    imageOffline() {
+        console.log('image offline!');
+        this.setState({
+            imageOffline: true
+        });
     }
 
     /**
@@ -112,7 +123,14 @@ export default class Pattern extends Component {
                                 </table>
                             </div>
                             <div className="mdl-cell mdl-cell--8-col">
-                                <img className="pattern-image" src={`/images/patterns/${this.state.content.id}_1.jpg`}/>
+                                {!this.state.imageOffline &&
+                                    <img alt="Pattern Image" className="pattern-image" src={`/images/patterns/${this.state.content.id}_1.jpg`} onError={() => this.imageOffline()}/>
+                                }
+                                {this.state.imageOffline &&
+                                    <div className="offline-image">
+                                        Image not available...
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
