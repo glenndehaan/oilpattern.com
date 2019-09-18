@@ -34,7 +34,7 @@ class Header extends Component {
                     <span className="mdl-layout-title"><Link href="/">{config.general.siteName}</Link></span>
                     <div className="mdl-layout-spacer"/>
                     {this.props.router.url === '/' &&
-                        <div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+                        <div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right is-focused">
                             <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="waterfall-exp">
                                 <i className="material-icons">search</i>
                             </label>

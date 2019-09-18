@@ -72,7 +72,7 @@ class Router extends Component {
      */
     render() {
         return (
-            <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <div className="mdl-layout mdl-layout--fixed-header">
                 <Header/>
                 {this.renderMain(this.state)}
             </div>

@@ -15,8 +15,8 @@
         <meta property="og:url" content="https://Oilpattern.com/"/>
         <meta property="og:description" content=""/>
 
-        <link rel="alternate" href="https://oilpattern.com/" hreflang="en" />
-        <link rel="canonical" href="https://oilpattern.com/" />
+        <link rel="alternate" href="https://oilpattern.com/" hreflang="en"/>
+        <link rel="canonical" href="https://oilpattern.com/"/>
         <script type='application/ld+json'>
             {
                 "@context": "http://schema.org",
@@ -32,11 +32,26 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#F03A00">
 
-        <link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.files.chunks.main.css %>" />
+        <link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.files.chunks.main.css %>"/>
     </head>
     <body>
+        <noscript>
+            <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+                <header class="mdl-layout__header">
+                    <div class="mdl-layout__header-row"><span class="mdl-layout-title"><a class="" href="/">Oilpattern.com</a></span>
+                        <div class="mdl-layout-spacer"></div>
+                    </div>
+                </header>
+                <main class="mdl-layout__content show">
+                    <div class="page-content center-text">
+                        <h4>Whoops! Please enable JavaScript to experience the full application.</h4>
+                    </div>
+                </main>
+            </div>
+        </noscript>
         <div id="app"></div>
-        <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', { scope: '/' });</script>
+
+        <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js', {scope: '/'});</script>
         <script type="text/javascript" src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
     </body>
 </html>

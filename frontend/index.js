@@ -12,6 +12,8 @@ import Router from './components/Router';
  */
 validateServiceWorkerInstance("/kill-switch.txt");
 
-document.querySelector('#app').innerHTML = "";
+/**
+ * Render the app
+ */
 render(<Provider store={store}><Router/></Provider>, document.querySelector('#app'));
 // require('preact/debug');
