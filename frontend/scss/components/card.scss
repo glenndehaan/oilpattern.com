@@ -13,41 +13,44 @@
   display: block;
 
   max-width: 820px;
-  height: 232px;
+  height: 225px;
   margin-bottom: 48px;
 
   overflow: hidden;
 
   header {
-    min-height: 200px;
+    min-height: 225px;
   }
 }
 
-.card-wide.mdl-card {
-  width: 100%;
-}
-.card-wide > .mdl-card__title {
-  color: #fff;
-  height: 176px;
-  background: none center / cover;
-}
-
-.card-wide > .mdl-card__menu {
-  color: #fff;
-}
-
-.mdl-card__title-text {
-  background-color: rgba(63, 81, 181, 0.7);
+.mdl-card {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .mdl-card__supporting-text {
-  min-height: 68px;
+  min-height: 172px;
 }
 
 .mdl-card__menu {
   button {
     i {
-      color: #616161 !important;
+      color: rgba(0,0,0, 0.54);
     }
+  }
+}
+
+@media (max-width: 480px) {
+  .mdl-card {
+    margin-top: 200px !important;
+  }
+
+  .row {
+    height: 440px !important;
+  }
+
+  .mdl-card__supporting-text {
+    min-height: 190px !important;
   }
 }

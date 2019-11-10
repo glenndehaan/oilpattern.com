@@ -13,6 +13,10 @@ class Home extends Component {
     constructor() {
         super();
 
+        this.state = {
+            clientWidth: document.body.clientWidth
+        };
+
         this.domElements = {
             mainContainer: null
         };
@@ -26,6 +30,25 @@ class Home extends Component {
 
         //Start intro when the component will appear
         pageIntro(() => {}, this.domElements);
+
+        //Check for resize events
+        window.addEventListener("resize", () => this.resize());
+    }
+
+    /**
+     * Runs then component unmounts
+     */
+    componentWillUnmount() {
+        window.removeEventListener("resize", () => this.resize());
+    }
+
+    /**
+     * Resize handler
+     */
+    resize() {
+        this.setState({
+            clientWidth: document.body.clientWidth
+        })
     }
 
     /**
@@ -60,7 +83,7 @@ class Home extends Component {
         return (
             <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
                 <div className="page-content">
-                    <VirtualList class="list" data={patterns} rowHeight={280} renderRow={this.renderRow} overscanCount={10}/>
+                    <VirtualList class="list" data={patterns} rowHeight={this.state.clientWidth < 480 ?  488 : 273} renderRow={this.renderRow} overscanCount={10}/>
                 </div>
             </main>
         );
