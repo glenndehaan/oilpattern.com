@@ -23,6 +23,15 @@ if(window.location.search.includes("?search=")) {
 }
 
 /**
+ * Check for resize events
+ */
+window.addEventListener("resize", () => {
+    store.setState({
+        clientWidth: document.body.clientWidth
+    });
+});
+
+/**
  * Render the app
  */
 render(<Provider store={store}><Router/></Provider>, document.querySelector('#app'));

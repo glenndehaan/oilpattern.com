@@ -17,6 +17,7 @@ const createStore = () => {
         },
         search: '',
         online: typeof window.navigator.onLine !== "undefined" ? window.navigator.onLine : true,
+        clientWidth: document.body.clientWidth,
         snackbar: {
             active: false,
             children: null
