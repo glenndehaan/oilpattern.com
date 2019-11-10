@@ -13,13 +13,13 @@
   display: block;
 
   max-width: 820px;
-  height: 225px;
+  height: 245px;
   margin-bottom: 48px;
 
   overflow: hidden;
 
   header {
-    min-height: 225px;
+    min-height: 245px;
   }
 }
 
@@ -30,27 +30,27 @@
 }
 
 .mdl-card__supporting-text {
-  min-height: 172px;
+  min-height: 190px;
 }
 
 .mdl-card__menu {
   button {
     i {
-      color: rgba(0,0,0, 0.54);
+      color: rgba(0, 0, 0, 0.54);
     }
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 479px) {
   .mdl-card {
     margin-top: 200px !important;
   }
 
   .row {
-    height: 440px !important;
+    height: 475px !important;
   }
 
   .mdl-card__supporting-text {
-    min-height: 190px !important;
+    min-height: 225px !important;
   }
 }

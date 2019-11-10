@@ -60,7 +60,7 @@ class Home extends Component {
         return (
             <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
                 <div className="page-content">
-                    <VirtualList class="list" data={patterns} rowHeight={this.props.clientWidth < 480 ?  488 : 273} renderRow={this.renderRow} overscanCount={10}/>
+                    <VirtualList class="list" data={patterns} rowHeight={this.props.clientWidth < 480 ? 523 : 293} renderRow={this.renderRow} overscanCount={10}/>
                 </div>
             </main>
         );
