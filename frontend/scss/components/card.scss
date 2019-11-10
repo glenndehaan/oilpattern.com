@@ -1,3 +1,28 @@
+.list {
+  position: absolute;
+
+  height: 100%;
+  width: 100%;
+
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.row {
+  position: relative;
+  display: block;
+
+  max-width: 820px;
+  height: 232px;
+  margin-bottom: 48px;
+
+  overflow: hidden;
+
+  header {
+    min-height: 200px;
+  }
+}
+
 .card-wide.mdl-card {
   width: 100%;
 }
@@ -22,7 +47,7 @@
 .mdl-card__menu {
   button {
     i {
-      background-color: rgb(63, 81, 181);
+      color: #616161 !important;
     }
   }
 }
