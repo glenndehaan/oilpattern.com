@@ -28,6 +28,12 @@ class Header extends Component {
         document.body.addEventListener("click", (e) => this.searchHandler(e));
         window.addEventListener('online', () => this.props.updateOnlineState(true));
         window.addEventListener('offline', () => this.props.updateOnlineState(false));
+
+        if(this.props.search !== '') {
+            this.setState({
+                searchOpen: true
+            });
+        }
     }
 
     /**

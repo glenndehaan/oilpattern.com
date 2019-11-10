@@ -13,7 +13,17 @@ import Router from './components/Router';
 validateServiceWorkerInstance("/kill-switch.txt");
 
 /**
+ * Check if search query has been send
+ */
+if(window.location.search.includes("?search=")) {
+    const search = window.location.search.replace('?search=', '');
+    store.setState({
+        search
+    });
+}
+
+/**
  * Render the app
  */
 render(<Provider store={store}><Router/></Provider>, document.querySelector('#app'));
-// require('preact/debug');
+require('preact/debug');
