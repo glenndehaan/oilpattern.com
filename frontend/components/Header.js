@@ -86,7 +86,12 @@ class Header extends Component {
                     {this.props.snackbar.children}
                 </Snackbar>
                 <div className="mdl-layout__header-row">
-                    <span className="mdl-layout-title"><Link href="/">{config.general.siteName}</Link></span>
+                    <span className="mdl-layout-title">
+                        <Link href="/">
+                            <img src="/images/icon/logo_144x144.png" alt="Logo"/>
+                            <span>{config.general.siteName}</span>
+                        </Link>
+                    </span>
                     <div className="mdl-layout-spacer"/>
                     {this.props.router.url === '/' &&
                         <div className={`mdl-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right ${this.state.searchOpen ? 'is-focused' : ''}`} ref={e => this.container = e}>

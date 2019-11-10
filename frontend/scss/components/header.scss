@@ -1,0 +1,16 @@
+.mdl-layout-title {
+  line-height: 45px;
+
+  img {
+    height: 45px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 415px) {
+  .mdl-layout-title {
+    span {
+      display: none;
+    }
+  }
+}
