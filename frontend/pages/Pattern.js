@@ -5,8 +5,9 @@ import {pageIntro} from '../utils/transitions';
 import stringUtils from '../utils/strings';
 
 import Link from "../components/Link";
+import {connect} from "unistore/preact";
 
-export default class Pattern extends Component {
+class Pattern extends Component {
     /**
      * Constructor
      */
@@ -119,6 +120,20 @@ export default class Pattern extends Component {
                                                 {stringUtils.stripHtml(this.state.content.description)}
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td className="mdl-data-table__cell--non-numeric">PDF</td>
+                                            <td className="mdl-data-table__cell--non-numeric">
+                                                <a href={this.props.online && `/docs/patterns/${this.state.content.id}.pdf`} download={`${this.state.content.id}.pdf`} disabled={!this.props.online} className="mdl-button mdl-button--raised mdl-button--colored">
+                                                    Download
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td className="mdl-data-table__cell--non-numeric">Provider</td>
+                                            <td className="mdl-data-table__cell--non-numeric">
+                                                <img className="provider-logo" src="/images/provider/kegel.png" alt="Provider logo"/>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -151,3 +166,8 @@ export default class Pattern extends Component {
         }
     }
 }
+
+/**
+ * Connect the store to the component
+ */
+export default connect('online')(Pattern);

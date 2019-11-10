@@ -115,6 +115,7 @@ module.exports = (env) => {
                 {from: 'public/fonts/*.*', to: 'fonts/', flatten: true},
                 {from: 'public/images/*.*', to: 'images/', flatten: true},
                 {from: 'public/images/icon/*.*', to: 'images/icon/', flatten: true},
+                {from: 'public/images/provider/*.*', to: 'images/provider/', flatten: true},
                 {from: 'public/images/patterns/*.*', to: 'images/patterns/', flatten: true},
                 {from: 'public/images/patterns/small/*.*', to: 'images/patterns/small/', flatten: true}
             ]),
