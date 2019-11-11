@@ -36,7 +36,7 @@ class Home extends Component {
      */
     renderRow(pattern) {
         return (
-            <Card buttons={["View", "Download"]} topIcon="share" title={pattern.title} slug={pattern.id}>
+            <Card buttons={["View", "Download"]} topIcon="share" title={pattern.title} slug={pattern.id} provider={pattern.provider}>
                 {pattern.description}
             </Card>
         );

@@ -11,3 +11,6 @@ build/
 # Dependency managers
 node_modules/
 npm-debug.log
+
+# Ingest folders
+_resources/

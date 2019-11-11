@@ -1,7 +1,8 @@
 /**
  * Import JSON's
  */
-const patterns = require('./patterns');
+const kegel = require('./patterns/kegel');
+const brunswick = require('./patterns/brunswick');
 
 /**
  * Export all config
@@ -10,5 +11,5 @@ export default {
     general: {
         siteName: "Oilpattern.com"
     },
-    patterns
+    patterns: [].concat(kegel, brunswick)
 };

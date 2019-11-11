@@ -40,7 +40,7 @@ class Card extends Component {
     render() {
         return (
             <section className="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp row">
-                <header className="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone" style={{background: `url(/images/patterns/small/${this.props.slug}_1.jpg) center / cover`}}/>
+                <header className="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone" style={{background: `url(/images/patterns/${this.props.provider}/small/${this.props.slug}_1.jpg) center / cover`}}/>
                 <div className="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                     <div className="mdl-card__supporting-text">
                         <h4>{this.props.title}</h4>
@@ -57,7 +57,7 @@ class Card extends Component {
                                     )
                                 } else {
                                     return (
-                                        <a key={key} href={this.props.online && `/docs/patterns/${this.props.slug}.pdf`} download={`${this.props.slug}.pdf`} disabled={!this.props.online} className="mdl-button mdl-button--colored">
+                                        <a key={key} href={this.props.online && `/docs/patterns/${this.props.provider}/${this.props.slug}.pdf`} download={`${this.props.slug}.pdf`} disabled={!this.props.online} className="mdl-button mdl-button--colored">
                                             {button}
                                         </a>
                                     )

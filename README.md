@@ -27,6 +27,13 @@ Then open up your favorite browser and go to http://localhost:3001/
 - Code from master is build by Docker Hub
 - Builds can be pulled by using this command: `docker pull glenndehaan/oilpattern.com`
 
+## TODO's
+- Add favourites
+- Add counter
+- Implement share QR codes
+- Publish on Google Play
+- Publish on MS Store
+
 ## License
 
 MIT

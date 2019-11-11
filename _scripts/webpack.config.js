@@ -9,7 +9,8 @@ const ReplaceInFileWebpackPlugin = require('replace-in-file-webpack-plugin');
 const CreateFileWebpack = require('create-file-webpack');
 const uuid = require('uuid/v4');
 
-const patterns = require(`${__dirname}/../frontend/config/patterns.json`);
+const kegelPatterns = require(`${__dirname}/../frontend/config/patterns/kegel`);
+const brunswickPatterns = require(`${__dirname}/../frontend/config/patterns/brunswick`);
 
 const projectRoot = path.join(__dirname, '../');
 const buildDirectory = path.join(projectRoot, 'frontend');
@@ -27,6 +28,11 @@ const paths = [
         changeFreq: 'daily'
     }
 ];
+
+/**
+ * Combine patterns
+ */
+const patterns = [].concat(kegelPatterns, brunswickPatterns);
 
 /**
  * Map patterns to paths
@@ -111,13 +117,16 @@ module.exports = (env) => {
                 {from: 'public/manifest.json'},
                 {from: 'public/robots.txt'},
                 {from: 'public/sw.js'},
-                {from: 'public/docs/patterns/*.*', to: 'docs/patterns/', flatten: true},
+                {from: 'public/docs/patterns/kegel/*.*', to: 'docs/patterns/kegel/', flatten: true},
+                {from: 'public/docs/patterns/brunswick/*.*', to: 'docs/patterns/brunswick/', flatten: true},
                 {from: 'public/fonts/*.*', to: 'fonts/', flatten: true},
                 {from: 'public/images/*.*', to: 'images/', flatten: true},
                 {from: 'public/images/icon/*.*', to: 'images/icon/', flatten: true},
                 {from: 'public/images/provider/*.*', to: 'images/provider/', flatten: true},
-                {from: 'public/images/patterns/*.*', to: 'images/patterns/', flatten: true},
-                {from: 'public/images/patterns/small/*.*', to: 'images/patterns/small/', flatten: true}
+                {from: 'public/images/patterns/kegel/*.*', to: 'images/patterns/kegel/', flatten: true},
+                {from: 'public/images/patterns/brunswick/*.*', to: 'images/patterns/brunswick/', flatten: true},
+                {from: 'public/images/patterns/kegel/small/*.*', to: 'images/patterns/kegel/small/', flatten: true},
+                {from: 'public/images/patterns/brunswick/small/*.*', to: 'images/patterns/brunswick/small/', flatten: true}
             ]),
             new HtmlWebpackPlugin({
                 template: 'public/index.html',

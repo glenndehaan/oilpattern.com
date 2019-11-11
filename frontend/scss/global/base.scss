@@ -73,6 +73,10 @@
   border-bottom: 1px solid rgb(255, 255, 255);
 }
 
+.mdl-textfield__expandable-holder {
+  max-width: 0;
+}
+
 .provider-logo {
   width: 100px;
 }

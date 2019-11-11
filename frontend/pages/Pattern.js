@@ -106,24 +106,30 @@ class Pattern extends Component {
                                             <td className="mdl-data-table__cell--non-numeric">Volume</td>
                                             <td className="mdl-data-table__cell--non-numeric">{this.state.content.volume} mL</td>
                                         </tr>
-                                        <tr>
-                                            <td className="mdl-data-table__cell--non-numeric">Forward</td>
-                                            <td className="mdl-data-table__cell--non-numeric">{this.state.content.forward} mL</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="mdl-data-table__cell--non-numeric">Reverse</td>
-                                            <td className="mdl-data-table__cell--non-numeric">{this.state.content.reverse} mL</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="mdl-data-table__cell--non-numeric">Description</td>
-                                            <td className="mdl-data-table__cell--non-numeric">
-                                                {stringUtils.stripHtml(this.state.content.description)}
-                                            </td>
-                                        </tr>
+                                        {this.state.content.forward !== '' &&
+                                            <tr>
+                                                <td className="mdl-data-table__cell--non-numeric">Forward</td>
+                                                <td className="mdl-data-table__cell--non-numeric">{this.state.content.forward} mL</td>
+                                            </tr>
+                                        }
+                                        {this.state.content.reverse !== '' &&
+                                            <tr>
+                                                <td className="mdl-data-table__cell--non-numeric">Reverse</td>
+                                                <td className="mdl-data-table__cell--non-numeric">{this.state.content.reverse} mL</td>
+                                            </tr>
+                                        }
+                                        {stringUtils.stripHtml(this.state.content.description) !== '' &&
+                                            <tr>
+                                                <td className="mdl-data-table__cell--non-numeric">Description</td>
+                                                <td className="mdl-data-table__cell--non-numeric">
+                                                    {stringUtils.stripHtml(this.state.content.description)}
+                                                </td>
+                                            </tr>
+                                        }
                                         <tr>
                                             <td className="mdl-data-table__cell--non-numeric">PDF</td>
                                             <td className="mdl-data-table__cell--non-numeric">
-                                                <a href={this.props.online && `/docs/patterns/${this.state.content.id}.pdf`} download={`${this.state.content.id}.pdf`} disabled={!this.props.online} className="mdl-button mdl-button--raised mdl-button--colored">
+                                                <a href={this.props.online && `/docs/patterns/${this.state.content.provider}/${this.state.content.id}.pdf`} download={`${this.state.content.id}.pdf`} disabled={!this.props.online} className="mdl-button mdl-button--raised mdl-button--colored">
                                                     Download
                                                 </a>
                                             </td>
@@ -131,7 +137,7 @@ class Pattern extends Component {
                                         <tr>
                                             <td className="mdl-data-table__cell--non-numeric">Provider</td>
                                             <td className="mdl-data-table__cell--non-numeric">
-                                                <img className="provider-logo" src="/images/provider/kegel.png" alt="Provider logo"/>
+                                                <img className="provider-logo" src={`/images/provider/${this.state.content.provider}.png`} alt="Provider logo"/>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -139,7 +145,7 @@ class Pattern extends Component {
                             </div>
                             <div className="mdl-cell mdl-cell--8-col">
                                 {!this.state.imageOffline &&
-                                    <img alt="Pattern Image" className="pattern-image" src={`/images/patterns/${this.state.content.id}_1.jpg`} onError={() => this.imageOffline()}/>
+                                    <img alt="Pattern Image" className="pattern-image" src={`/images/patterns/${this.state.content.provider}/${this.state.content.id}_1.jpg`} onError={() => this.imageOffline()}/>
                                 }
                                 {this.state.imageOffline &&
                                     <div className="offline-image">
