@@ -68,7 +68,10 @@ class Card extends Component {
                     {this.props.topIcon &&
                         <div className="mdl-card__menu">
                             <button className="mdl-button mdl-button--icon" onClick={() => this.share()}>
-                                <i className="material-icons">{this.props.topIcon}</i>
+                                <i className="material-icons">share</i>
+                            </button>
+                            <button className="mdl-button mdl-button--icon" onClick={() => this.props.updateFavourites(this.props.slug)}>
+                                <i className={`material-icons ${this.props.favourites.includes(this.props.slug) ? 'mdl-color-text--primary' : ''}`}>star</i>
                             </button>
                         </div>
                     }
@@ -81,4 +84,4 @@ class Card extends Component {
 /**
  * Connect the store to the component
  */
-export default connect('online', actions)(Card);
+export default connect('online,favourites', actions)(Card);

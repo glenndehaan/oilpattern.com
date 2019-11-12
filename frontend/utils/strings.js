@@ -6,7 +6,7 @@ export default {
      * @param length
      * @return {string|*}
      */
-    truncate: (str, length = 100) => {
+    truncate: (str, length = 150) => {
         const truncStr = str.substring(0, length);
         return str.length > length ? `${truncStr}...` : str;
     },

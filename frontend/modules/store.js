@@ -21,7 +21,8 @@ const createStore = () => {
         snackbar: {
             active: false,
             children: null
-        }
+        },
+        favourites: []
     };
 
     return process.env.NODE_ENV === 'production' ?  createUnistore(initialState) : devtools(createUnistore(initialState));
@@ -52,6 +53,14 @@ const actions = () => {
         updateRouter(state, payload) {
             return {
                 router: payload
+            };
+        },
+        updateFavourites(state, payload) {
+            const currentFavourites = [...state.favourites];
+            currentFavourites.push(payload);
+
+            return {
+                favourites: currentFavourites
             };
         }
     };
