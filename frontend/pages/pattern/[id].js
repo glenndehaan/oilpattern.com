@@ -78,6 +78,9 @@ class Pattern extends Component {
                 <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
                     <Head>
                         <title>{this.state.content.title} | {config.general.siteName}</title>
+                        <meta name="description" content={`${this.state.content.title} - ${this.state.content.category} - Distance: ${this.state.content.distance} feet / The bowling oilpattern catalog`}/>
+                        <meta property="og:title" content={`${this.state.content.title} | ${config.general.siteName}`}/>
+                        <meta property="og:description" content={`${this.state.content.title} - ${this.state.content.category} - Distance: ${this.state.content.distance} feet / The bowling oilpattern catalog`}/>
                     </Head>
                     <div className="page-content">
                         <Link href="/">
@@ -139,7 +142,7 @@ class Pattern extends Component {
                                         <tr>
                                             <td className="mdl-data-table__cell--non-numeric">Provider</td>
                                             <td className="mdl-data-table__cell--non-numeric">
-                                                <img className="provider-logo" src={`/images/provider/${this.state.content.provider}.png`} alt="Provider logo"/>
+                                                <img className="provider-logo" src={`/images/provider/${this.state.content.provider}.png`} alt="Provider logo" title="Oilpattern Provider Logo"/>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -147,7 +150,7 @@ class Pattern extends Component {
                             </div>
                             <div className="mdl-cell mdl-cell--8-col">
                                 {!this.state.imageOffline &&
-                                    <img alt="Pattern Image" className="pattern-image" src={`/images/patterns/${this.state.content.provider}/${this.state.content.id}_1.jpg`} onError={() => this.imageOffline()}/>
+                                    <img alt="Pattern Image" className="pattern-image" src={`/images/patterns/${this.state.content.provider}/${this.state.content.id}_1.jpg`} title={`${this.state.content.title} oilpattern`} onError={() => this.imageOffline()}/>
                                 }
                                 {this.state.imageOffline &&
                                     <div className="offline-image">

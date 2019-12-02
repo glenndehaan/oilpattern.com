@@ -62,6 +62,9 @@ class Home extends Component {
             <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
                 <Head>
                     <title>Home | {config.general.siteName}</title>
+                    <meta name="description" content="The bowling oilpattern catalog / Provides all oilpatterns from mayor vendors in a small website optimized for mobile"/>
+                    <meta property="og:title" content={`Home | ${config.general.siteName}`}/>
+                    <meta property="og:description" content="The bowling oilpattern catalog / Provides all oilpatterns from mayor vendors in a small website optimized for mobile"/>
                 </Head>
                 <div className="page-content">
                     <VirtualList className="list" data={patterns} rowHeight={this.props.clientWidth < 480 ? 523 : 293} renderRow={this.renderRow} overscanCount={10}/>

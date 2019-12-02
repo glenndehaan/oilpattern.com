@@ -34,6 +34,9 @@ export default class MyError extends Component {
             <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
                 <Head>
                     <title>Not Found | {config.general.siteName}</title>
+                    <meta name="description" content="The bowling oilpattern catalog / Provides all oilpatterns from mayor vendors in a small website optimized for mobile"/>
+                    <meta property="og:title" content={`Not Found | ${config.general.siteName}`}/>
+                    <meta property="og:description" content="The bowling oilpattern catalog / Provides all oilpatterns from mayor vendors in a small website optimized for mobile"/>
                 </Head>
                 <div className="page-content">
                     <div className="mdl-grid">

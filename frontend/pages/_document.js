@@ -20,14 +20,12 @@ export default class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
-                    <meta name="description" content="The bowling oilpattern catalog"/>
                     <meta name="author" content="Oilpattern.com"/>
 
-                    <meta property="og:title" content="Oilpattern.com"/>
                     <meta property="og:type" content="website"/>
                     <meta property="og:image" content="https://oilpattern.com/images/share.jpg"/>
                     <meta property="og:url" content="https://Oilpattern.com/"/>
-                    <meta property="og:description" content="The bowling oilpattern catalog"/>
+                    <meta name="twitter:card" content="summary_large_image"/>
 
                     <link rel="alternate" href="https://oilpattern.com/" hrefLang="en"/>
                     <link rel="canonical" href="https://oilpattern.com/"/>

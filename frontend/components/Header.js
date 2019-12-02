@@ -90,7 +90,7 @@ class Header extends Component {
                     <span className="mdl-layout-title">
                         <Link href="/">
                             <a>
-                                <img src="/images/icon/logo_144x144.png" alt="Logo"/>
+                                <img src="/images/icon/logo_144x144.png" alt="Logo" title="Oilpattern.com Logo"/>
                                 <span>{config.general.siteName}</span>
                             </a>
                         </Link>
