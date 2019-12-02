@@ -1,10 +1,12 @@
-import {h, Component} from 'preact';
-import {connect} from "unistore/preact";
-import VirtualList from 'preact-virtual-list';
+import React, {Component} from 'react';
+import {connect} from 'unistore/react';
+import Head from 'next/head';
 
 import config from '../config';
 import {pageIntro} from '../utils/transitions';
-import Card from "../components/Card";
+
+import Card from '../components/Card';
+import VirtualList from '../components/VirtualList';
 
 class Home extends Component {
     /**
@@ -22,8 +24,6 @@ class Home extends Component {
      * Runs then component mounts
      */
     componentDidMount(){
-        document.title = `Home | ${config.general.siteName}`;
-
         //Start intro when the component will appear
         pageIntro(() => {}, this.domElements);
     }
@@ -32,18 +32,19 @@ class Home extends Component {
      * Renders one pattern card
      *
      * @param pattern
+     * @param key
      * @return {*}
      */
-    renderRow(pattern) {
+    renderRow(pattern, key) {
         return (
-            <Card buttons={["View", "Download"]} topIcon="share" title={pattern.title} slug={pattern.id} provider={pattern.provider}>
+            <Card buttons={["View", "Download"]} topIcon="share" title={pattern.title} slug={pattern.id} provider={pattern.provider} key={key}>
                 {pattern.description}
             </Card>
         );
     }
 
     /**
-     * Preact render function
+     * React render function
      *
      * @returns {*}
      */
@@ -59,8 +60,11 @@ class Home extends Component {
 
         return (
             <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
+                <Head>
+                    <title>Home | {config.general.siteName}</title>
+                </Head>
                 <div className="page-content">
-                    <VirtualList class="list" data={patterns} rowHeight={this.props.clientWidth < 480 ? 523 : 293} renderRow={this.renderRow} overscanCount={10}/>
+                    <VirtualList className="list" data={patterns} rowHeight={this.props.clientWidth < 480 ? 523 : 293} renderRow={this.renderRow} overscanCount={10}/>
                 </div>
             </main>
         );

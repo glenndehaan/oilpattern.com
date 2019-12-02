@@ -1,21 +1,25 @@
-import {h, Component} from 'preact';
+import React, {Component} from 'react';
+import {connect} from 'unistore/react';
+import { withRouter } from 'next/router';
+import Head from 'next/head';
+import Link from 'next/link';
+import Error from '../_error';
 
-import config from '../config';
-import {pageIntro} from '../utils/transitions';
-import stringUtils from '../utils/strings';
-
-import Link from "../components/Link";
-import {connect} from "unistore/preact";
+import config from '../../config';
+import {pageIntro} from '../../utils/transitions';
+import stringUtils from '../../utils/strings';
 
 class Pattern extends Component {
     /**
      * Constructor
      */
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
+        const {id} = props.router.query;
 
         this.state = {
-            content: false,
+            content: this.searchPattern(parseInt(id), config.patterns),
             imageOffline: false
         };
 
@@ -27,14 +31,7 @@ class Pattern extends Component {
     /**
      * Runs then component mounts
      */
-    componentDidMount(){
-        document.title = `Pattern | ${config.general.siteName}`;
-
-        const urlParts = this.props.url.split('/');
-        this.setState({
-            content: this.searchPattern(parseInt(urlParts[urlParts.length - 1]), config.patterns)
-        });
-
+    componentDidMount() {
         //Start intro when the component will appear
         pageIntro(() => {}, this.domElements);
     }
@@ -79,11 +76,16 @@ class Pattern extends Component {
         if(this.state.content) {
             return (
                 <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
+                    <Head>
+                        <title>{this.state.content.title} | {config.general.siteName}</title>
+                    </Head>
                     <div className="page-content">
                         <Link href="/">
-                            <button className="mdl-button mdl-button--fab fixed-button mdl-color--primary mdl-color-text--primary-contrast">
-                                <i className="material-icons">close</i>
-                            </button>
+                            <a>
+                                <button className="mdl-button mdl-button--fab fixed-button mdl-color--primary mdl-color-text--primary-contrast">
+                                    <i className="material-icons">close</i>
+                                </button>
+                            </a>
                         </Link>
                         <div className="mdl-grid">
                             <div className="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
@@ -159,15 +161,7 @@ class Pattern extends Component {
             );
         } else {
             return (
-                <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
-                    <div className="page-content">
-                        <div className="mdl-grid">
-                            <div className="mdl-cell mdl-cell--10-col">
-                                <h2>404 Page not found!</h2>
-                            </div>
-                        </div>
-                    </div>
-                </main>
+                <Error/>
             );
         }
     }
@@ -176,4 +170,4 @@ class Pattern extends Component {
 /**
  * Connect the store to the component
  */
-export default connect('online')(Pattern);
+export default connect('online')(withRouter(Pattern));

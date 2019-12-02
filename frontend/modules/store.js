@@ -1,8 +1,6 @@
 import createUnistore from 'unistore';
 import devtools from 'unistore/devtools';
 
-import {getBaseRoute} from "../utils/routing";
-
 /**
  * Exports the store with the default state
  *
@@ -10,21 +8,16 @@ import {getBaseRoute} from "../utils/routing";
  */
 const createStore = () => {
     const initialState = {
-        router: {
-            current: getBaseRoute(),
-            previous: null,
-            url: window.location.pathname
-        },
         search: '',
-        online: typeof window.navigator.onLine !== "undefined" ? window.navigator.onLine : true,
-        clientWidth: document.body.clientWidth,
+        online: typeof window !== "undefined" && typeof window.navigator.onLine !== "undefined" ? window.navigator.onLine : true,
+        clientWidth: typeof document !== "undefined" ? document.body.clientWidth : 1000, //todo fix
         snackbar: {
             active: false,
             children: null
         }
     };
 
-    return process.env.NODE_ENV === 'production' ?  createUnistore(initialState) : devtools(createUnistore(initialState));
+    return typeof window === "undefined" || process.env.NODE_ENV === 'production' ? createUnistore(initialState) : devtools(createUnistore(initialState));
 };
 
 /**

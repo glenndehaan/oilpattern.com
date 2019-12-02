@@ -1,9 +1,9 @@
-import {h, Component} from 'preact';
-import {connect} from "unistore/preact";
+import React, {Component} from 'react';
+import {connect} from 'unistore/react';
+import Link from 'next/link';
 
 import {actions} from "../modules/store";
 import stringUtils from '../utils/strings';
-import Link from "./Link";
 
 class Card extends Component {
     /**
@@ -51,13 +51,15 @@ class Card extends Component {
                             {this.props.buttons.map((button, key) => {
                                 if(button === 'View') {
                                     return (
-                                        <Link key={key} href={`/pattern/${this.props.slug}`} className="mdl-button mdl-button--colored">
-                                            {button}
+                                        <Link key={key} href={`/pattern/[id]`} as={`/pattern/${this.props.slug}`}>
+                                            <a className="mdl-button mdl-button--colored">
+                                                {button}
+                                            </a>
                                         </Link>
                                     )
                                 } else {
                                     return (
-                                        <a key={key} href={this.props.online && `/docs/patterns/${this.props.provider}/${this.props.slug}.pdf`} download={`${this.props.slug}.pdf`} disabled={!this.props.online} className="mdl-button mdl-button--colored">
+                                        <a key={key} href={this.props.online ? `/docs/patterns/${this.props.provider}/${this.props.slug}.pdf` : undefined} download={`${this.props.slug}.pdf`} disabled={!this.props.online} className="mdl-button mdl-button--colored">
                                             {button}
                                         </a>
                                     )

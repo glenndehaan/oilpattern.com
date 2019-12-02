@@ -7,6 +7,8 @@ import fetch from './fetch';
  * @param {string} expect
  */
 export const validateServiceWorkerInstance = (url = '/api/sw', expect = 'false') => {
+    // Check if we are on a client
+    if(typeof navigator === 'undefined') return;
     // Return if service worker is not supported
     if ('serviceWorker' in navigator === false) return;
     // Fetch to the validate url

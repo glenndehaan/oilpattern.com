@@ -1,9 +1,10 @@
-import {h, Component} from 'preact';
+import React, {Component} from 'react';
+import Head from 'next/head';
 
 import config from '../config';
 import {pageIntro} from '../utils/transitions';
 
-export default class NotFound extends Component {
+export default class MyError extends Component {
     /**
      * Constructor
      * @param props
@@ -19,20 +20,21 @@ export default class NotFound extends Component {
      * Runs then component mounts
      */
     componentDidMount(){
-        document.title = `Not Found | ${config.general.siteName}`;
-
         //Start intro when the component will appear
         pageIntro(() => {}, this.domElements);
     }
 
     /**
-     * Preact render function
+     * React render function
      *
      * @returns {*}
      */
     render() {
         return (
             <main className="mdl-layout__content" ref={(c) => this.domElements.mainContainer = c}>
+                <Head>
+                    <title>Not Found | {config.general.siteName}</title>
+                </Head>
                 <div className="page-content">
                     <div className="mdl-grid">
                         <div className="mdl-cell mdl-cell--10-col">

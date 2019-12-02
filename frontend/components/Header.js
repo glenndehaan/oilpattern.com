@@ -1,10 +1,11 @@
-import {h, Component} from 'preact';
-import { connect } from 'unistore/preact';
+import React, {Component} from 'react';
+import {connect} from 'unistore/react';
+import Link from 'next/link';
+import {withRouter} from 'next/router';
 
-import {actions} from "../modules/store";
+import {actions} from '../modules/store';
 import config from '../config';
-import Link from "./Link";
-import Snackbar from "./Snackbar";
+import Snackbar from './Snackbar';
 
 class Header extends Component {
     /**
@@ -72,7 +73,7 @@ class Header extends Component {
     }
 
     /**
-     * Preact render function
+     * React render function
      *
      * @returns {*}
      */
@@ -88,18 +89,20 @@ class Header extends Component {
                 <div className="mdl-layout__header-row">
                     <span className="mdl-layout-title">
                         <Link href="/">
-                            <img src="/images/icon/logo_144x144.png" alt="Logo"/>
-                            <span>{config.general.siteName}</span>
+                            <a>
+                                <img src="/images/icon/logo_144x144.png" alt="Logo"/>
+                                <span>{config.general.siteName}</span>
+                            </a>
                         </Link>
                     </span>
                     <div className="mdl-layout-spacer"/>
-                    {this.props.router.url === '/' &&
+                    {this.props.router.route === '/' &&
                         <div className={`mdl-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right ${this.state.searchOpen ? 'is-focused' : ''}`} ref={e => this.container = e}>
                             <label className="mdl-button mdl-button--icon" htmlFor="waterfall-exp">
                                 <i className="material-icons" onClick={() => this.searchToggle(true)}>search</i>
                             </label>
                             <div className="mdl-textfield__expandable-holder">
-                                <input className="mdl-textfield__input" type="text" name="sample" id="waterfall-exp" value={this.props.search} ref={(c) => this.searchBar = c} onKeyUp={() => this.search()}/>
+                                <input className="mdl-textfield__input" type="text" name="sample" id="waterfall-exp" defaultValue={this.props.search} ref={(c) => this.searchBar = c} onKeyUp={() => this.search()}/>
                             </div>
                         </div>
                     }
@@ -112,4 +115,4 @@ class Header extends Component {
 /**
  * Connect the store to the component
  */
-export default connect('router,search,online,snackbar', actions)(Header);
+export default connect('search,online,snackbar', actions)(withRouter(Header));
