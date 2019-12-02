@@ -27,8 +27,6 @@ export default class MyDocument extends Document {
                     <meta property="og:url" content="https://Oilpattern.com/"/>
                     <meta name="twitter:card" content="summary_large_image"/>
 
-                    <link rel="alternate" href="https://oilpattern.com/" hrefLang="en"/>
-                    <link rel="canonical" href="https://oilpattern.com/"/>
                     <script type='application/ld+json' dangerouslySetInnerHTML={{__html:`
                         {
                             "@context": "http://schema.org",
