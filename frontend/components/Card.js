@@ -44,7 +44,7 @@ class Card extends Component {
                 <div className="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                     <div className="mdl-card__supporting-text">
                         <h4>{this.props.title}</h4>
-                        {stringUtils.truncate(stringUtils.stripHtml(this.props.children))}
+                        {stringUtils.truncate(this.props.children)}
                     </div>
                     {this.props.buttons &&
                         <div className="mdl-card__actions mdl-card--border">

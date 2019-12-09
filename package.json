@@ -74,6 +74,7 @@
   },
   "devDependencies": {
     "convert-excel-to-json": "^1.6.1",
+    "html-to-text": "^5.1.1",
     "imagemagick": "^0.1.3",
     "node-html-parser": "^1.1.16",
     "pdf2pic": "^1.3.10",

@@ -12,22 +12,6 @@ export default {
     },
 
     /**
-     * Removes HTML tags from string
-     *
-     * @param html
-     * @return {string | string}
-     */
-    stripHtml: (html) => {
-        if(typeof document === "undefined") {
-            return html;
-        }
-
-        const tmp = document.createElement("div");
-        tmp.innerHTML = html;
-        return tmp.textContent || tmp.innerText || "";
-    },
-
-    /**
      * Copy a string to the users clipboard
      *
      * @param string

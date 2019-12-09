@@ -7,7 +7,6 @@ import Error from '../_error';
 
 import config from '../../config';
 import {pageIntro} from '../../utils/transitions';
-import stringUtils from '../../utils/strings';
 
 class Pattern extends Component {
     /**
@@ -123,11 +122,11 @@ class Pattern extends Component {
                                                 <td className="mdl-data-table__cell--non-numeric">{this.state.content.reverse} mL</td>
                                             </tr>
                                         }
-                                        {stringUtils.stripHtml(this.state.content.description) !== '' &&
+                                        {this.state.content.description !== '' &&
                                             <tr>
                                                 <td className="mdl-data-table__cell--non-numeric">Description</td>
                                                 <td className="mdl-data-table__cell--non-numeric">
-                                                    {stringUtils.stripHtml(this.state.content.description)}
+                                                    {this.state.content.description}
                                                 </td>
                                             </tr>
                                         }
