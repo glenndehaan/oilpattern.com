@@ -97,7 +97,7 @@ class Header extends Component {
                     </span>
                     <div className="mdl-layout-spacer"/>
                     {this.props.router.route === '/' &&
-                        <div className={`mdl-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right ${this.state.searchOpen ? 'is-focused' : ''}`} ref={e => this.container = e}>
+                        <div className={`search-bar mdl-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right ${this.state.searchOpen ? 'is-focused' : ''}`} ref={e => this.container = e}>
                             <label className="mdl-button mdl-button--icon" htmlFor="waterfall-exp">
                                 <i className="material-icons" onClick={() => this.searchToggle(true)}>search</i>
                             </label>

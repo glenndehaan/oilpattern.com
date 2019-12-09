@@ -31,6 +31,7 @@ export default class MyApp extends App {
 
         /**
          * Check if search query has been send
+         * @todo Needs fix for server side rendering
          */
         if(typeof window !== "undefined") {
             if(window.location.search.includes("?search=")) {

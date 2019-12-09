@@ -57,7 +57,7 @@ export default class MyDocument extends Document {
                     <meta name="mobile-web-app-capable" content="yes"/>
                     <meta name="theme-color" content="#3F51B5"/>
                     <noscript>
-                        <style dangerouslySetInnerHTML={{__html: `.mdl-layout__content { opacity: 1 !important }`}} />
+                        <style dangerouslySetInnerHTML={{__html: `.mdl-layout__content { opacity: 1 !important; } .search-bar {display: none !important; opacity: 0 !important;}`}} />
                     </noscript>
                 </Head>
                 <body>
