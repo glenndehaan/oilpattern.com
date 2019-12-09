@@ -7,7 +7,11 @@
 
 # Js & css build files
 .next/
+*.log
 
 # Dependency managers
 node_modules/
 npm-debug.log
+
+# Ingest folders
+_resources/
