@@ -88,7 +88,7 @@ const getData = (url, id) => {
  */
 const pdf = (url, id) => {
     return new Promise((resolve) => {
-        exec(`curl -o "${__dirname}/../../public/docs/patterns/kegel/${id}.pdf" "http://patternlibrary.kegel.net/PatternLibraryFunctions.aspx?OPCODE=DOWNLOADFILE&ID=${id}&Type=2"`, (err) => {
+        exec(`curl -o "${__dirname}/../../frontend/public/docs/patterns/kegel/${id}.pdf" "http://patternlibrary.kegel.net/PatternLibraryFunctions.aspx?OPCODE=DOWNLOADFILE&ID=${id}&Type=2"`, (err) => {
             if (err) {
                 console.log('err', err);
                 resolve();
@@ -113,12 +113,12 @@ const image = (id) => {
             const pdf2pic = new PDF2Pic({
                 density: 300,
                 savename: id,
-                savedir: `${__dirname}/../../public/images/patterns/kegel`,
+                savedir: `${__dirname}/../../frontend/public/images/patterns/kegel`,
                 format: "jpg",
                 size: "2480x3508"
             });
 
-            pdf2pic.convertBulk(`${__dirname}/../../public/docs/patterns/kegel/${id}.pdf`, [1]).then(() => {
+            pdf2pic.convertBulk(`${__dirname}/../../frontend/public/docs/patterns/kegel/${id}.pdf`, [1]).then(() => {
                 console.log("Image saved!");
                 resolve(true);
             }).catch(() => {

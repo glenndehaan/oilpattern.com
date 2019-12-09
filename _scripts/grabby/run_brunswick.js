@@ -55,9 +55,9 @@ const getData = (directory) => {
                 reverse: ''
             });
 
-            fs.copyFileSync(`${__dirname}/../../_resources/brunswick/${directory}/${pdfFile}`, `${__dirname}/../../public/docs/patterns/brunswick/${id}.pdf`);
+            fs.copyFileSync(`${__dirname}/../../_resources/brunswick/${directory}/${pdfFile}`, `${__dirname}/../../frontend/public/docs/patterns/brunswick/${id}.pdf`);
             console.log('PDF Saved!');
-            fs.copyFileSync(`${__dirname}/../../_resources/brunswick/${directory}/${imageFile}`, `${__dirname}/../../public/images/patterns/brunswick/${id}_1.jpg`);
+            fs.copyFileSync(`${__dirname}/../../_resources/brunswick/${directory}/${imageFile}`, `${__dirname}/../../frontend/public/images/patterns/brunswick/${id}_1.jpg`);
             console.log("Image saved!");
 
             id++;
