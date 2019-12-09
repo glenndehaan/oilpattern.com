@@ -5,8 +5,9 @@
   "scripts": {
     "prestart": "rimraf ./.next",
     "start": "nodemon --watch app --exec 'npm run lint && node ./app/server.js'",
+    "start:production": "NODE_ENV=production node ./app/server.js",
     "prebuild": "rimraf ./.next",
-    "build": "next build ./frontend && NODE_ENV=production node ./app/server.js",
+    "build": "next build ./frontend",
     "lint": "eslint -c ./package.json ./"
   },
   "engines": {

@@ -20,7 +20,7 @@ const server = express();
  * Init logger and set log level
  */
 const log = require('simple-node-logger').createSimpleLogger({
-    logFilePath: `${dev ? __dirname : process.cwd()}/log/oilpattern.log`,
+    logFilePath: `${__dirname}/log/oilpattern.log`,
     timestampFormat: 'YYYY-MM-DD HH:mm:ss.SSS'
 });
 log.setLevel('trace');
@@ -72,7 +72,7 @@ server.use((req, res, next) => {
  * Add Next.JS check route
  */
 server.use((req, res, next) => {
-    if(req.originalUrl === "/next-ready-check-url") {
+    if (req.originalUrl === "/next-ready-check-url") {
         res.set('Content-Type', 'text/plain');
         return res.status(200).send(`${nextReady}`);
     }
@@ -84,7 +84,7 @@ server.use((req, res, next) => {
  * Check if Next.JS is ready to handle requests
  */
 server.use((req, res, next) => {
-    if(nextReady) {
+    if (nextReady) {
         return next();
     }
 
